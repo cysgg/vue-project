@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue入门</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!--
+			v-if false 删除标签 修改dom
+			v-show false 隐藏标签 修改style
+			v-for 循环展示 第一个变量表示值，第二个表示数组下标
+		 
+		-->
+		<div id="root">
+			<div>
+				<input v-model="inputValue" />
+				<button @click="addlist">提交</button>
+			</div>
+			<ul>
+				<li v-for="(item,index) of list" :key="index">{{item}}</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el:"#root",
+				data:{
+					inputValue : "",
+					list : []
+				},
+				methods : {
+					addlist: function(){
+						this.list.push(this.inputValue)
+						this.inputValue = ""
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

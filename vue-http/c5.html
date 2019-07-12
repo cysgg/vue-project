@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue入门</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!--
+			v-if false 删除标签 修改dom
+			v-show false 隐藏标签 修改style
+			v-for 循环展示 第一个变量表示值，第二个表示数组下标
+		 
+		-->
+		<div id="root">
+			<div>
+                <button @click="langqilai">浪起来</button>
+                <button @click="didiao">低调</button>
+            </div>
+            <div v-text=msg></div>
+		</div>
+		<script>
+			new Vue({
+				el:"#root",
+				data:{
+                    msg : "猥琐发育，别浪~~！",
+                    t1: null
+				},
+				methods : {
+					langqilai(){
+                        if(this.t1 != null) return;
+                        this.t1 = setInterval( () => {
+                            var start = this.msg.substring(0,1)
+                            var end = this.msg.substring(1)
+                            this.msg = end + start
+                            
+                        },400)
+                    },
+                    didiao(){
+                        clearInterval(this.t1)
+                        this.t1 = null
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

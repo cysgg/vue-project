@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue入门</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!-- v-on:click 等价于 @click -->
+		<div id="root">
+			<div @click="handleClick">{{msg}}</div>
+		</div>
+		<script>
+			new Vue({
+				el:"#root",
+				data:{
+					msg:"hello",
+					a:"没戏那个岛吧"
+				},
+				methods:{
+					handleClick: function(){
+						this.msg = "world"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

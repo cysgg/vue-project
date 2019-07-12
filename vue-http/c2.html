@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue入门</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!--
+			computed用来计算
+			watch用来做监听器
+		 
+		-->
+		<div id="root">
+			姓：<input v-model="firstName" />
+			名：<input v-model="lastName" />
+			<div>{{fullName}}</div>
+			<div>{{count}}</div>
+		</div>
+		<script>
+			new Vue({
+				el:"#root",
+				data:{
+					firstName :"",
+					lastName : "",
+					count:0
+				},
+				computed:{
+					fullName : function(){
+						return this.firstName + " " + this.lastName
+					}
+				},
+				watch:{
+					fullName: function(){
+						this.count++
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

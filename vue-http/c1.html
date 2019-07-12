@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue入门</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!--
+			v-bind:title 等价于 :title
+			v-model 数据双向绑定 即任意一边数据变化，另一边也会发生变化
+		 
+		-->
+		<div id="root">
+			<div :title="content">hello world</div>
+			<input v-model="content" />
+			<div v-text=content></div>
+		</div>
+		<script>
+			new Vue({
+				el:"#root",
+				data:{
+					title : "this is hello world",
+					content : "this is content"
+				}
+			})
+		</script>
+	</body>
+</html>

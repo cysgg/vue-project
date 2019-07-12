@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue入门</title>
+        <script src="js/vue.js"></script>
+        <style>
+            .inner{
+                height: 100px;
+                width: 100%;
+                background-color: #ccc;
+            }
+            .outer{
+                padding: 40px;
+                background-color: #888;
+            }
+        </style>
+	</head>
+	<body>
+		<!--
+            事件修饰符：
+            @click.stop 阻止事件冒泡
+            .prevent 阻止默认行为
+            .capture 实现事件捕获模式
+            .self 点击自身才会触发，点击子元素不触发
+            .once 触发一次
+
+            可叠加
+		 
+		-->
+		<div id="root">
+            <div class="outer">
+                <div class="inner" @click.capture="click1">
+                    <button @click.stop="click2">戳它</button>
+                </div>
+            </div>
+		<!-- 
+            <div @click="click1">
+                <button @click.stop="click2">戳它</button>
+            </div> 
+        -->
+        <!-- <a href="http://www.baidu.com" @click.prevent="linkClick">百度一下</a> -->
+
+        <!-- 
+            <div class="inner" @click.capture="click1">
+                <button @click.stop="click2">戳它</button>
+            </div>
+        
+        -->
+            
+		<!-- 
+            <div class="inner" @click.self="click1">
+                <button @click.stop="click2">戳它</button>
+            </div>
+        
+        -->
+        <<a href="http://www.baidu.com" @click.prevent.once="linkClick">百度一下</a>
+		</div>
+		<script>
+			new Vue({
+				el:"#root",
+				data:{
+				},
+				methods : {
+					click1(){
+                        console.log("div")
+                    },
+                    click2(){
+                        console.log("btn")
+                    },
+                    linkClick(){
+                        console.log("触发了link的点击事件")
+                    }
+				}
+			})
+		</script>
+	</body>
+</html>

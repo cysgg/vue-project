@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{msg | msgopt('灯框')}}</p>
+            <input @keyup.f2="keycli"  v-focus v-color="'red'"/>
+        </div>
+        <script>
+
+            //过滤器
+            Vue.filter('msgopt',function(msg,arg){
+                return msg.replace(/偶爱/g,arg)
+            })
+
+            //自定义全局按键修饰符
+            Vue.config.keyCodes.f2 = 113
+
+            //定义全局指令
+            Vue.directive('focus',{
+                bind:function(el){
+                    //每当指令绑定到元素的时候执行 只执行一次
+                    el.focus()
+                },
+                inserted:function(el){
+                    //insert表示元素插入到DOM的时候执行 只执行一次
+                    el.focus()
+                },
+                updated:function(el) {
+                    //VNode更新的时候，会执行 updated,可能会触发多次
+                    el.focus()
+                }
+            })
+
+
+
+
+            new Vue({
+                el: '#app',
+                data: {
+                    msg : "出发时间奇偶爱哈佛阿萨斯脑 偶爱 偶爱打"
+                },
+                methods: {
+                    keycli(){
+                        alert("f2")
+                    }
+                },
+                directives:{
+                    'color':function(el,binding){
+                        el.style.color = binding.value
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

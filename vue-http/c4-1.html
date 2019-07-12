@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue入门</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!--
+			v-if false 删除标签 修改dom
+			v-show false 隐藏标签 修改style
+			v-for 循环展示 index属性，表示数组下标
+		 
+		-->
+		<div id="root">
+			<div>
+				<input v-model="inputValue" />
+				<button @click="addlist">提交</button>
+			</div>
+			<ul>
+				<todo-item 
+					v-for="(item,index) of list" 
+					:key="index"
+					:content="item"
+					:index="index"
+					@deletec="handleDelete"
+					>
+					
+				</todo-item>
+			</ul>
+		</div>
+		<script>
+			
+			//全局
+// 			Vue.component("todo-item",{
+// 				props:["content"], // 从外部接收属性值
+// 				template:"<li @click='handleClick'>{{content}}</li>",
+// 				methods:{
+// 					handleClick:function(){
+// 						alert('666')
+// 					}
+// 				}
+// 			})
+			
+			
+			
+			//局部
+			var TodoItem = {
+				props:["content","index"], // 从外部接收属性值
+				template:"<li @click='handleClick'>{{content}}</li>",
+				methods:{
+					handleClick:function(){
+						let a = this.index
+						this.$emit('deletec',a) // 向外触发事件 事件名:delete,传值为a
+					}
+				}
+			}
+			
+			
+			new Vue({
+				el:"#root",
+				components:{
+					'todo-item':TodoItem
+				},
+				data:{
+					inputValue : "",
+					list : []
+				},
+				methods : {
+					addlist: function(){
+						this.list.push(this.inputValue)
+						this.inputValue = ""
+					},
+					handleDelete:function(a){
+						this.list.splice(a,1)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
