@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            <mycom1></mycom1>
+        </div>
+        <script>
+            Vue.component('mycom1',{
+                template : '<h3>这是直接使用Vue.component 创建的组件</h3>'
+            })
+
+            new Vue({
+                el: '#app',
+                data: {
+                    
+                },
+                methods: {
+                    
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            <a href="" @click.prevent="conName='login'">登录</a>
+            <a href="" @click.prevent="conName='regirster'">注册</a>
+            <component :is="conName"></component>
+        </div>
+        
+        <!-- <template id="tmpl">
+            <div>
+                <h1>hahah</h1>
+                <h4>wow</h4>
+            </div>
+        </template> -->
+        <script>
+            // Vue.component('mycom3',{
+            //     template : '#tmpl'
+            // })
+            Vue.component('login',{
+                template : '<h3>登录组件</h3>'
+            })
+            Vue.component('regirster',{
+                template : '<h3>注册组件</h3>'
+            })
+            new Vue({
+                el: '#app',
+                data: {
+                    conName : 'login'
+                },
+                methods: {
+                    
+                },
+                // components:{
+                //     login : {
+                //         template : '<h1>hahah</h1>'
+                //     }
+                // }
+            })
+        </script>
+    </body>
+</html>

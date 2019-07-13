@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+        <style>
+            li{
+                border: 1px dashed #000;
+                margin: 5px;
+                line-height: 35px;
+                padding-left: 5px;
+                list-style: none;
+                font-size: 12px;
+                transition: all 1s ease;
+                width: 100%;
+            }
+            li:hover{
+                background-color: hotpink;
+                transition: all 1s ease;
+            }
+            .cc-enter,
+            .cc-leave-to{
+                opacity: 0;
+                transform: translateY(80px);
+            }
+
+            .cc-enter-active,
+            .cc-leave-active{
+                transition: all 1s ease;
+            }
+            /* v-move,v-leave-active配合使用，能够实现列表后续元素，渐渐飘上来的效果 */
+            .cc-move{
+                transition: all 1s ease;
+            }
+            .cc-leave-active{
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div>
+                <label>
+                    Id:
+                    <input type="text" v-model="id">
+                </label>
+
+                <label>
+                        Name:
+                    <input type="text" v-model="name">
+                </label>
+
+                <input type="button" value="添加" @click="add">
+            </div>
+            <!-- 需要过渡的元素，通过v-for 渲染出来的，不能使用transition包裹出来的，需要使用 transitionGroup -->
+            <transition-group name="cc" appear tag="ul">
+                <li v-for="(item,i) in list" :key="item.id" @click="del(i)">
+                    {{item.id}}-----{{item.name}}
+                </li>
+            </transition-group>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    id : '',
+                    name : '',
+                    list:[
+                        {
+                            id:1,name:'赵高'
+                        },
+                        {
+                            id:2,name:'秦桧'
+                        },
+                        {
+                            id:3,name:'严嵩'
+                        },
+                        {
+                            id:4,name:'魏忠贤'
+                        }
+                    ]
+                },
+                methods: {
+                    add(){
+                        this.list.push({
+                            id : this.id,
+                            name : this.name
+                        })
+                        this.id = ''
+                        this.name = ''
+                    },
+                    del(i){
+                        this.list.splice(i,1)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

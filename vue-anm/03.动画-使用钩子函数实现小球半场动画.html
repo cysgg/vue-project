@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+        <style>
+            .ball{
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <input type="button" value="快到碗里来" @click="flag=!flag">
+            <transition 
+                @before-enter="beforeEnter"
+                @enter="enter"
+                @after-enter="afterEnter"
+                :css="false"
+            >
+                <div class="ball" v-if="flag"></div>
+            </transition>
+            
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    flag : false
+                },
+                methods: {
+                    beforeEnter(el,done){
+                        Velocity(el, {opacity: 1 }, { complete: done })
+                        console.log(this.flag)
+                        // el.style.transform = "translate(0,0)"
+                    },
+                    enter(el, done){
+                        Velocity(el, { translateX: '150px',translateY : '450px' }, { duration: 1000 })
+                        Velocity(el, { opacity: 0 },{ complete: done })
+                        // Velocity(el,{opacity: 1},{ duration: 1000 }, { complete: done })
+                        // setTimeout(() => {
+                        //     
+                        //     el.style.transform = "translate(150px,450px)";
+                        //     el.style.transition = "all 2s easy";
+                        //     done()
+                        // }, 20)
+                        
+                    },
+                    afterEnter(el){
+                        this.flag = !this.flag
+                        console.log(this.flag)
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

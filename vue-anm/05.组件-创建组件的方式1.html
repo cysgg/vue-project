@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            <my-com-test></my-com-test>
+        </div>
+        <script>
+            // 使用Vue.extend 来创建全局的Vue组件
+            // var com1 = Vue.extend({
+            //     template : '<h3>这是使用Vue.extend 创建的组件</h3>'
+            // })
+            // //使用Vue.component('组建的名称',创建出来的组件模板对象)
+            // Vue.component('myComTest',com1)
+            
+            Vue.component('myComTest',Vue.extend({
+                template : '<h3>这是使用Vue.extend 创建的组件</h3>'
+            }))
+            
+            new Vue({
+                el: '#app',
+                data: {
+                    
+                },
+                methods: {
+                    
+                }
+            })
+        </script>
+    </body>
+</html>
