@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+        <script src="js/vue-router.js"></script>
+        <style>
+            .router-link-active{
+                color: red;
+                font-weight: 800;
+                font-size: 80px;
+                font-style: italic;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <router-link to="/login" tag="a">登录</router-link>
+            <router-link to="/register">注册</router-link>
+            <router-view></router-view>
+            <!-- <a href="#/login"></a>
+            <a href="#/register"></a> -->
+        </div>
+        <script>
+            var login = {
+                template : '<h1>登录组件</h1>'
+            }
+            var register = {
+                template : '<h1>注册组件</h1>'
+            }
+            var routerObj = new VueRouter({
+                routes : [
+                    {path : '/',redirect : 'login'},
+                    {path : '/login',component : login},
+                    {path : '/register',component : register}
+                ]
+                // linkActiveClass : 'myactive'
+            })
+            new Vue({
+                el: '#app',
+                data: {
+                    
+                },
+                methods: {
+                    
+                },
+                router: routerObj
+            })
+        </script>
+    </body>
+</html>

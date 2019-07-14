@@ -26,12 +26,12 @@
             
         </div>
         <script>
-            Vue.component('login',{
-                template : '<h3>登录组件</h3>'
-            })
-            Vue.component('regirster',{
-                template : '<h3>注册组件</h3>'
-            })
+            // Vue.component('login',{
+            //     template : '<h3>登录组件</h3>'
+            // })
+            // Vue.component('regirster',{
+            //     template : '<h3>注册组件</h3>'
+            // })
             new Vue({
                 el: '#app',
                 data: {
@@ -39,6 +39,14 @@
                 },
                 methods: {
                     
+                },
+                components:{
+                    login : {
+                        template : '<h3>登录组件</h3>'
+                    },
+                    regirster : {
+                        template : '<h3>注册组件</h3>'
+                    }
                 }
             })
         </script>

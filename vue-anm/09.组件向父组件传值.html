@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            <com1 :parentmsg='msg' @func="show"></com1>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    msg : '123 - 这是父组件的数据'
+                },
+                methods: {
+                    show(a){
+                        alert('这是父组件的方法' + String(a))
+                    }
+                },
+                components: {
+                    com1 : {
+                        props : ['parentmsg'],
+                        methods: {
+                            mycli(){
+                                this.$emit('func',this.name)
+                            }
+                        },
+                        data() {
+                            return {
+                                name : 'ccc'
+                            }
+                        },
+                        template : '<h1 @click="mycli">这是子组件 ---- {{parentmsg}}</h1>'
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
