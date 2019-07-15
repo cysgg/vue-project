@@ -48,3 +48,22 @@
         new VueRouter({
             linkActiveClass : 'myactive'
         })
+
++ 如果在路由中，使用查询字符串，给路由传递参数，不需要改变 路由规则的path
+
++ 在Vue 的每个实例中都可以调用 this.$route 获取到本身路由的信息
+
++ route实例里，每个路由都有一个children属性，定义子路由的属性
+
++ 在一个路由想展示多个路由组件时 可以这样实现
+    const router = new VueRouter({
+        routes : [
+            {path:'/', components : {
+                'default':header,
+                'left' : leftBox,
+                'main':mainBox
+            } },
+        ]
+    })
+    
+    <router-view name='main'></router-view>

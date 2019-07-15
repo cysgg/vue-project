@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='js/vue.js'></script>
+        <script src='js/vue-router.js'></script>
+        <style>
+            .header{
+                background-color: orange;
+                height: 80px;
+            }
+            .container{
+                display: flex;
+            }
+            .left{
+                background-color: lightgreen;
+                height: 600px;
+                flex: 2;
+
+            }
+            h1,html,body{
+                margin: 0;
+                padding: 0;
+            }
+            .main{
+                flex: 8;
+                background-color: lightpink;
+                height: 600px;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <router-view></router-view>
+            <div class="container">
+                <router-view name='left'></router-view>
+                <router-view name='main'></router-view>
+            </div>
+            
+        </div>
+        <script>
+            var header = {
+                template : '<h1 class="header">header头部</he>'
+            }
+            var leftBox = {
+                template : '<h1 class="left">leftbox侧边栏</he>'
+            }
+            var mainBox = {
+                template : '<h1 class="main">mainbox主体</he>'
+            }
+            const router = new VueRouter({
+                routes : [
+                    {path:'/', components : {
+                        'default':header,
+                        'left' : leftBox,
+                        'main':mainBox
+                    } },
+                ]
+            })
+            new Vue({
+                el: '#app',
+                data: {
+                    
+                },
+                methods: {
+                    
+                },
+                router
+            })
+        </script>
+    </body>
+</html>

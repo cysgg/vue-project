@@ -13,13 +13,27 @@
                 font-style: italic;
                 text-decoration: underline;
             }
+            .v-enter,
+            .v-leave-to{
+                opacity: 0;
+                transform: translateX(140px);
+            }
+            .v-enter-active,
+            .v-leave-active{
+                transition: all 1s ease;
+            }
         </style>
     </head>
     <body>
         <div id="app">
             <router-link to="/login" tag="a">登录</router-link>
             <router-link to="/register">注册</router-link>
-            <router-view></router-view>
+
+            <transition mode='out-in'>
+                <router-view></router-view>
+            </transition>
+        
+            
             <!-- <a href="#/login"></a>
             <a href="#/register"></a> -->
         </div>
