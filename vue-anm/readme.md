@@ -56,6 +56,7 @@
 + route实例里，每个路由都有一个children属性，定义子路由的属性
 
 + 在一个路由想展示多个路由组件时 可以这样实现
+
     const router = new VueRouter({
         routes : [
             {path:'/', components : {

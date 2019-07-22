@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>vue入门</title>
+        <script src='src/vue.js'></script>
+    </head>
+    <body>
+        <div id="app">
+            
+        </div>
+        <script>
+            var login = {
+                template : "<h1>这是登录组件</h1>"
+            }
+            new Vue({
+                el: '#app',
+                data: {
+                    
+                },
+                methods: {
+                    
+                },
+                // render(h) {
+                    
+                // },
+                render: function(createElements) {
+                    return createElements(login)
+                },
+            })
+        </script>
+    </body>
+</html>
