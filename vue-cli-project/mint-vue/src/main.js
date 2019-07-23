@@ -7,11 +7,13 @@ import router from './router'
 import 'mint-ui/lib/style.css'
 import '../lib/css/mui.min.css'
 import '../lib/css/icons-extra.css'
+import VueResource from 'vue-resource'
 
 
 Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(Cell)
+Vue.use(VueResource)
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
