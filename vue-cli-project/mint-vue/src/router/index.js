@@ -4,6 +4,8 @@ import homeContext from '../components/homeContext.vue'
 import memberContext from '../components/memberContext'
 import shopcarContext from '../components/shopcarContext'
 import searchContext from '../components/searchContext'
+import NewsList from '../components/news/NewsList'
+import NewsInfo from '../components/news/NewsInfo'
 
 Vue.use(Router)
 
@@ -13,7 +15,9 @@ export default new Router({
     {path : "/home",component:homeContext},
     {path : "/member",component:memberContext},
     {path : "/shopcar",component:shopcarContext},
-    {path : "/search",component:searchContext}
+    {path : "/search",component:searchContext},
+    {path : "/home/newslist",component:NewsList},
+    {path : "/home/newslist/newsinfo/:id",component:NewsInfo}
   ],
   linkActiveClass: 'mui-active'
 })
