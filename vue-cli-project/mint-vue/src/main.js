@@ -9,7 +9,7 @@ import '../lib/css/mui.min.css'
 import '../lib/css/icons-extra.css'
 import moment from 'moment'
 import VueResource from 'vue-resource'
-
+// import mui from'../lib/js/mui.js';
 
 Vue.config.productionTip = false
 Vue.use(Button)

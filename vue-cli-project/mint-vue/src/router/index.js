@@ -6,6 +6,7 @@ import shopcarContext from '../components/shopcarContext'
 import searchContext from '../components/searchContext'
 import NewsList from '../components/news/NewsList'
 import NewsInfo from '../components/news/NewsInfo'
+import photosInfo from '../components/photos/photosInfo'
 
 Vue.use(Router)
 
@@ -17,7 +18,8 @@ export default new Router({
     {path : "/shopcar",component:shopcarContext},
     {path : "/search",component:searchContext},
     {path : "/home/newslist",component:NewsList},
-    {path : "/home/newslist/newsinfo/:id",component:NewsInfo}
+    {path : "/home/newslist/newsinfo/:id",component:NewsInfo},
+    {path : "/home/photolist",component:photosInfo}
   ],
   linkActiveClass: 'mui-active'
 })
