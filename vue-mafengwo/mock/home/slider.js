@@ -1,5 +1,5 @@
 const slider = {
-  url: 'http://localhost:3000/api/home/slider/slider_info_list',
+  url: /\/api\/home\/slider\/slider_info_list/,
   type: 'get',
   response: {
     code: 200,

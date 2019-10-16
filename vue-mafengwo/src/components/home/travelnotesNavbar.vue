@@ -1,16 +1,24 @@
 <template>
   <div class="navbar">
     <ul class="tn-nav">
-      <li class="tn-nav-hot active">
+      <li
+        class="tn-nav-hot"
+        :class="{'active': currItem === 'hot'}"
+        @click="handleClick('hot')"
+      >
         <a href="javascript:void(0);">
           热门游记
         </a>
-        <span class="tn-menu">
+        <span class="tn-menu" @click.stop="">
           <i class="tn-menu-icon"></i>
           筛选
         </span>
       </li>
-      <li class="tn-nav-new">
+      <li
+        class="tn-nav-new"
+        :class="{'active': currItem === 'new'}"
+        @click="handleClick('new')"
+      >
         <a href="javascript:void(0);">
           最新发表
         </a>
@@ -21,10 +29,23 @@
 
 <script>
 export default {
+  name: '',
+  data () {
+    return {
+      currItem: 'hot'
+    }
+  },
+  methods: {
+    handleClick (val) {
+      this.currItem = val
+      this.$emit('navbarClick', val)
+    }
+  }
 }
 </script>
 
 <style scoped lang="stylus">
+@import '~style/common.styl'
 .navbar
   margin-bottom 20px
   height 36px
@@ -43,7 +64,7 @@ export default {
         font-size 18px
         &:hover
           text-decoration none
-          color #ff9d00
+          color $theme_color
       .tn-menu
         display inline-block
         margin-left 7px
@@ -55,8 +76,8 @@ export default {
         cursor pointer
         vertical-align 2px
         &:hover
-          border-color #ff9d00
-          background-color #ff9d00
+          border-color $theme_color
+          background-color $theme_color
           color #fff
           .tn-menu-icon
             background-position 0 -140px
@@ -69,11 +90,11 @@ export default {
           background url('../../assets/images/mfw_logo2.png') no-repeat 0 -130px
       &.active
         padding-bottom 6px
-        border-bottom 3px solid #ff9d00
+        border-bottom 3px solid $theme_color
         position relative
         z-index 11
         a
-          color #ff9d00
+          color $theme_color
         i
           display inline-block
     .tn-nav-hot

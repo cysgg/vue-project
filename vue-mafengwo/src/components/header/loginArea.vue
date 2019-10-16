@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+@import '~style/common.styl'
 .login-out
   padding 16px 0
   float right
@@ -46,7 +47,7 @@ export default {
         background-position -30px -165px
   a
     font-size 14px
-    color #ff9d00
+    color $theme_color
   .split
     display inline-block
     margin 0 10px

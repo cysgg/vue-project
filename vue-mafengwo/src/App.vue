@@ -20,4 +20,5 @@ body
   min-width 1140px
   overflow-x hidden
   margin 0 auto
+  user-select none
 </style>

@@ -31,6 +31,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+@import '~style/common.styl'
 .head-search
   height 58px
   float left
@@ -75,7 +76,7 @@ export default {
     .head-searchform
       input
         width: 360px;
-        border-color #ff9d00
+        border-color $theme_color
         box-shadow 0 0 3px rgba(255, 157, 0, .5)
         background-color #fff
       .icon-search

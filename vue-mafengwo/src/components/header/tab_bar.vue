@@ -60,6 +60,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
+@import '~style/common.styl'
 .tabber
   position absolute
   width 100%
@@ -103,8 +104,8 @@ export default {
           overflow hidden
           &:hover
             height 55px
-            color #ff9d00
-            border-bottom 3px solid #ff9d00
+            color $theme_color
+            border-bottom 3px solid $theme_color
           .mfwzx-logo
             width 75px
             height 58px
@@ -112,7 +113,7 @@ export default {
             background-size 75px 30px
       .head-nav-li-active
         a
-          background-color #ff9d00
+          background-color $theme_color
           color #fff
           &:hover
             color #fff

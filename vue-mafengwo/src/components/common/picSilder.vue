@@ -164,7 +164,7 @@ export default {
           top 0
           right 0
           bottom 0
-          border 2px solid #ff9d00
+          border 2px solid $theme_color
           width 106px
           height 58px
           overflow hidden
