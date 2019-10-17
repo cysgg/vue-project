@@ -13,6 +13,10 @@
         <!-- 游记组件 -->
         <travelnotes></travelnotes>
       </div>
+      <div class="mfw-aside">
+        <safetyPrevention class="asidebox"></safetyPrevention>
+        <traveller class="asidebox"></traveller>
+      </div>
     </div>
   </div>
 </template>
@@ -21,12 +25,16 @@
 import showSilder from 'components/home/showSilder'
 import tabList from 'components/home/tabList'
 import travelnotes from 'components/home/travelnotes'
+import safetyPrevention from 'components/common/safetyPrevention'
+import traveller from 'components/home/traveller'
 export default {
   name: 'home',
   components: {
     showSilder,
     tabList,
-    travelnotes
+    travelnotes,
+    safetyPrevention,
+    traveller
   }
 }
 </script>
@@ -43,4 +51,9 @@ export default {
   .mfw-wraper
     float right
     width 700px
+  .mfw-aside
+    float left
+    width 260px
+    .asidebox
+      margin-bottom 30px
 </style>

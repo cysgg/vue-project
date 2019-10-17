@@ -60,7 +60,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '~style/common.styl'
 .tabber
   position absolute
   width 100%

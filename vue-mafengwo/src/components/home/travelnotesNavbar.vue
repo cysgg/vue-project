@@ -45,7 +45,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '~style/common.styl'
 .navbar
   margin-bottom 20px
   height 36px

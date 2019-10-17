@@ -1,14 +1,16 @@
 <template>
   <div>
     <!-- 遍历传过来需要展示的数组，将需要展示的每一项传出 -->
-    <div
-      class="pg-item"
-      v-for="(item, index) in paginationList"
-      :key="index"
-    >
-    <!-- 具名插槽 itemContetn 传出的值为名为travelnote -->
-      <slot name="itemContent" :travelnote="item"></slot>
-    </div>
+    <transition-group name="pgitem">
+      <div
+        class="pg-item"
+        v-for="item in paginationList"
+        :key="item.id"
+      >
+      <!-- 具名插槽 itemContetn 传出的值为名为travelnote -->
+        <slot name="itemContent" :travelnote="item"></slot>
+      </div>
+    </transition-group>
     <div class="pagination">
       <span class="count">共{{pageSum}}页/{{total}}条</span>
       <span
@@ -119,7 +121,10 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '~style/common.styl'
+.pgitem-leave-active
+  transition opacity .3s
+.pgitem-enter, .pgitem-leave-to
+  opacity 0
 .pagination
   padding 20px 0 20px 5px
   line-height 24px

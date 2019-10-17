@@ -3,7 +3,7 @@
     <!-- 标题 -->
     <travelnotes-navbar ref="tn_nav" @navbarClick="navbarHandle"></travelnotes-navbar>
     <!-- 内容 -->
-    <travelnotes-content :tnNavEl='tnNavEl'></travelnotes-content>
+    <travelnotes-content :tnNavEl='tnNavEl' :tnType='tnType'></travelnotes-content>
   </div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
   name: 'travelnotes',
   data () {
     return {
-      tnNavEl: null
+      tnNavEl: null,
+      tnType: 'hot'
     }
   },
   components: {
@@ -27,6 +28,7 @@ export default {
   methods: {
     navbarHandle (val) {
       console.log(val)
+      this.tnType = val
     }
   }
 }

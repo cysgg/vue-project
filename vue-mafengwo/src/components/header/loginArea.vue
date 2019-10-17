@@ -16,7 +16,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '~style/common.styl'
 .login-out
   padding 16px 0
   float right

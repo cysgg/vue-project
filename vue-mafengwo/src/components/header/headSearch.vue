@@ -31,7 +31,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '~style/common.styl'
 .head-search
   height 58px
   float left

@@ -54,64 +54,68 @@
 <script>
 import paginationContent from 'components/common/paginationContent'
 import api from '@/api/index'
+import { scrollIt } from '@/utils/scrollIt'
 export default {
   name: 'travelnotesContent',
   props: {
     tnNavEl: {
       type: HTMLDivElement,
       default: null
+    },
+    tnType: {
+      type: String,
+      validator: v => ['hot', 'new'].includes(v),
+      default: 'hot'
     }
   },
   data () {
     return {
       travelnotes: [],
       total: 0,
-      subLen: 0,
       apiQuery: {
         page: 1,
         limit: 6
       }
     }
   },
-  watch: {
-    subLen (nv, ov) {
-      // let tnScrollTop = this.tnNavEl.offsetTop
-      // let docScrollTop = document.documentElement.scrollTop
-      // if (docScrollTop === tnScrollTop || nv === 0) {
-      //   return
-      // }
-      // if (docScrollTop > tnScrollTop) {
-      //   this.subLen--
-      //   document.documentElement.scrollTop -= 1
-      // } else {
-      //   this.subLen++
-      //   document.documentElement.scrollTop += 1
-      // }
-    }
-  },
   components: {
     paginationContent
+  },
+  watch: {
+    tnType (nv, ov) {
+      this.apiQuery.page = 1
+      this.fetchData()
+        .then(res => this.scrollToTnNav())
+    }
   },
   methods: {
     gettravelnotes (page) {
       // 因为apiQuery.page 在.sync已经修改了,所以不用再传值
       this.fetchData()
-      this.scrollToTnNav()
-    },
-    scrollHandle (e) {
-      console.log(e)
+        .then(res => this.scrollToTnNav())
     },
     scrollToTnNav () {
       let tnScrollTop = this.tnNavEl.offsetTop
-      let docScrollTop = document.documentElement.scrollTop
-      this.subLen = Math.abs(tnScrollTop - docScrollTop)
+      scrollIt(tnScrollTop)
     },
     // 请求方法
     fetchData () {
-      api.gettravelnotesInfo(this.apiQuery).then(res => {
-        console.log(res)
-        this.travelnotes = res.travelnotes
-        this.total = res.total
+      return new Promise((resolve, reject) => {
+        if (this.tnType === 'hot') {
+          api.gettravelnotesHotInfo(this.apiQuery).then(res => {
+            console.log(res)
+            this.travelnotes = res.travelnotes
+            this.total = res.total
+            return resolve(res)
+          })
+        } else {
+          api.gettravelnotesNewInfo(this.apiQuery).then(res => {
+            console.log(res)
+            this.travelnotes = res.travelnotes
+            this.total = res.total
+            return resolve(res)
+          })
+        }
       })
     }
   },
@@ -122,7 +126,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '~style/common.styl'
 .tn-item
   padding 15px 0
   height 150px

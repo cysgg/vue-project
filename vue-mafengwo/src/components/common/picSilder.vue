@@ -54,7 +54,8 @@ export default {
   },
   data () {
     return {
-      currIndex: 0
+      currIndex: 0,
+      ivTimer: null
     }
   },
   methods: {
@@ -70,13 +71,15 @@ export default {
     formatMonAndYear
   },
   mounted () {
-    setInterval(this.sliderTimer, 10000)
+    this.ivTimer = setInterval(this.sliderTimer, 10000)
+  },
+  beforeDestroy () {
+    clearInterval(this.ivTimer)
   }
 }
 </script>
 
 <style scoped lang="stylus">
-@import '~style/common.styl'
 .show-slider
   position relative
   overflow hidden
