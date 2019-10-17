@@ -1,7 +1,7 @@
 <template>
   <div>
     <asidebox :title="'旅行家专栏'" :headRight="'专栏首页'">
-      <digSlider class="asidebox-bd" :sliderList="travellerList"></digSlider>
+      <digSlider :sliderList="travellerList"></digSlider>
     </asidebox>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
     }
   },
   created () {
-    api.gettravellerInfo().then(res => {
+    api.getTravellerInfo().then(res => {
       console.log(res)
       this.travellerList = res.travellerList
     })
@@ -31,9 +31,4 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.asidebox-bd
-  width 260px
-  height 246px
-  position relative
-  overflow hidden
 </style>

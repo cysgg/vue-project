@@ -41,13 +41,16 @@ export default {
   getSliderListInfo (params) {
     return fetchGet('/api/home/slider/slider_info_list')
   },
-  gettravelnotesHotInfo (params) {
+  getTravelnotesHotInfo (params) {
     return fetchGet('/api/home/travelnotes/travelnotesHot_info_list', params)
   },
-  gettravelnotesNewInfo (params) {
+  getTravelnotesNewInfo (params) {
     return fetchGet('/api/home/travelnotes/travelnotesNew_info_list', params)
   },
-  gettravellerInfo () {
+  getTravellerInfo () {
     return fetchGet('/api/home/traveller/traveller_info_list')
+  },
+  getGonglveInfo () {
+    return fetchGet('/api/home/gonglve/gonglve_info')
   }
 }

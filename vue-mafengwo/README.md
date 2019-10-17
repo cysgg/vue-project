@@ -13,3 +13,5 @@
     首页最新游记数据
   4. /api/home/traveller/traveller_info_list
     首页旅行家专栏数据
+  5. /api/home/gonglve/gonglve_info
+    首页旅行攻略数据

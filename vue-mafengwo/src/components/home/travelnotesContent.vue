@@ -102,14 +102,14 @@ export default {
     fetchData () {
       return new Promise((resolve, reject) => {
         if (this.tnType === 'hot') {
-          api.gettravelnotesHotInfo(this.apiQuery).then(res => {
+          api.getTravelnotesHotInfo(this.apiQuery).then(res => {
             console.log(res)
             this.travelnotes = res.travelnotes
             this.total = res.total
             return resolve(res)
           })
         } else {
-          api.gettravelnotesNewInfo(this.apiQuery).then(res => {
+          api.getTravelnotesNewInfo(this.apiQuery).then(res => {
             console.log(res)
             this.travelnotes = res.travelnotes
             this.total = res.total

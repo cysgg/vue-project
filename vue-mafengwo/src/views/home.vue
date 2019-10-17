@@ -16,6 +16,7 @@
       <div class="mfw-aside">
         <safetyPrevention class="asidebox"></safetyPrevention>
         <traveller class="asidebox"></traveller>
+        <gonglve class="asidebox"></gonglve>
       </div>
     </div>
   </div>
@@ -27,6 +28,7 @@ import tabList from 'components/home/tabList'
 import travelnotes from 'components/home/travelnotes'
 import safetyPrevention from 'components/common/safetyPrevention'
 import traveller from 'components/home/traveller'
+import gonglve from 'components/home/gonglve'
 export default {
   name: 'home',
   components: {
@@ -34,7 +36,8 @@ export default {
     tabList,
     travelnotes,
     safetyPrevention,
-    traveller
+    traveller,
+    gonglve
   }
 }
 </script>
