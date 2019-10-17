@@ -21,4 +21,6 @@ body
   overflow-x hidden
   margin 0 auto
   user-select none
+  font-size 12px
+  color #666
 </style>
