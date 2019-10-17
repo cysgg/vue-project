@@ -1,9 +1,13 @@
 import header from './header'
 import slider from './slider'
-import travelnotes from './travelnotes'
+import travelnotesHot from './travelnotesHot'
+import travelnotesNew from './travelnotesNew'
+import traveller from './traveller'
 
 export default [
   header,
   slider,
-  travelnotes
+  travelnotesHot,
+  travelnotesNew,
+  traveller
 ]
