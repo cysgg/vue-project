@@ -7,7 +7,7 @@
         :class="index === currIndex ? 'show' : 'hide'"
       >
         <router-link tag="a" class="show-pic" to="">
-          <img :src="item.imgUrl" alt="">
+          <img v-lazy="item.imgUrl" alt="">
         </router-link>
         <router-link tag="a" class="show-title dark" to="">
           <div class="date">
@@ -29,7 +29,7 @@
         :class="{'active':currIndex === index}"
       >
         <router-link to="" tag="a">
-          <img :src="item.smallImg" height="62" width="110" alt="">
+          <img v-lazy="item.smallImg" height="62" width="110" alt="">
           <span></span>
         </router-link>
       </li>

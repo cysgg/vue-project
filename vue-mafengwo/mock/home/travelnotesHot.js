@@ -1,5 +1,5 @@
 import { getUrlParam } from '@/utils/common.js'
-import travelnotesList from '../json/travelnote'
+import travelnotesList from '../json/travelnoteHot'
 import Mock from 'mockjs'
 
 const travelnotesHot = {

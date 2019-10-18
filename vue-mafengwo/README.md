@@ -15,3 +15,7 @@
     首页旅行家专栏数据
   5. /api/home/gonglve/gonglve_info
     首页旅行攻略数据
+  6. /api/home/activity/activity_info_list
+    首页最新活动数据
+  7. /api/home/joinmfw/joinmfw_info
+    首页加入马蜂窝数据

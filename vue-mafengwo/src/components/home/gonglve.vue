@@ -4,7 +4,7 @@
       <div v-if="gonglveInfo" class="gonglve-item">
         <div class="img">
           <router-link to="" tag="a">
-            <img :src="gonglveInfo.imgUrl" alt="">
+            <img v-lazy="gonglveInfo.imgUrl" alt="">
             <span class="mark">
               {{gonglveInfo.title}}
             </span>

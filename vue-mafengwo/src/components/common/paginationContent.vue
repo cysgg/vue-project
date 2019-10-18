@@ -68,6 +68,11 @@ export default {
       currIndex: 1
     }
   },
+  watch: {
+    page (nv, ov) {
+      this.currIndex = nv
+    }
+  },
   computed: {
     pageSum () {
       if (!this.total || !this.limit) {

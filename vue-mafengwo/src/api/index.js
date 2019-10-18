@@ -52,5 +52,17 @@ export default {
   },
   getGonglveInfo () {
     return fetchGet('/api/home/gonglve/gonglve_info')
+  },
+  getActivityInfo () {
+    return fetchGet('/api/home/activity/activity_info_list')
+  },
+  getLaboratoryInfo () {
+    return fetchGet('/api/home/laboratory/laboratory_info')
+  },
+  getJoinmfwInfo () {
+    return fetchGet('/api/home/joinmfw/joinmfw_info')
+  },
+  getMfwnewsInfo () {
+    return fetchGet('/api/home/mfwnews/mfwnews_info_list')
   }
 }

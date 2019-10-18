@@ -15,7 +15,16 @@ function formatMonAndYear (date) {
   return `${dateMonth[times[1]]}.${times[0]}`
 }
 
+function formatMonthAndDay (date) {
+  if (!date) {
+    return ''
+  }
+  let times = date.split('-')
+  return `${times[1]}月${times[2]}日`
+}
+
 export {
   formatDay,
-  formatMonAndYear
+  formatMonAndYear,
+  formatMonthAndDay
 }

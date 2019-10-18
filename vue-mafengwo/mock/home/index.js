@@ -4,6 +4,10 @@ import travelnotesHot from './travelnotesHot'
 import travelnotesNew from './travelnotesNew'
 import traveller from './traveller'
 import gonglve from './gonglve'
+import activity from './activity'
+import laboratory from './laboratory'
+import joinmfw from './joinmfw'
+import mfwnews from './mfwnews'
 
 export default [
   header,
@@ -11,5 +15,9 @@ export default [
   travelnotesHot,
   travelnotesNew,
   traveller,
-  gonglve
+  gonglve,
+  activity,
+  laboratory,
+  joinmfw,
+  mfwnews
 ]

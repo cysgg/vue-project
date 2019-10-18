@@ -6,7 +6,7 @@
       <template v-slot:itemContent="{travelnote}">
         <div class="tn-item">
           <div class="tn-image">
-            <img :src="travelnote.image" alt="">
+            <img v-lazy="travelnote.image" alt="">
           </div>
           <div class="tn-wrapper">
             <div class="tn-content">
@@ -35,7 +35,7 @@
               </span>
               <span class="tn-user">
                 <router-link to="" tag="a">
-                  <img :src="travelnote.userImg" alt="">
+                  <img v-lazy="travelnote.userImg" alt="">
                   {{travelnote.userName}}
                 </router-link>
               </span>
@@ -74,7 +74,7 @@ export default {
       total: 0,
       apiQuery: {
         page: 1,
-        limit: 6
+        limit: 10
       }
     }
   },

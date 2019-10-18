@@ -48,9 +48,4 @@ export default {
   .hd-right
     float right
     color #999
-.asidebox-bd
-  width 260px
-  height 246px
-  position relative
-  overflow hidden
 </style>

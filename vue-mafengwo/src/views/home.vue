@@ -13,11 +13,27 @@
         <!-- 游记组件 -->
         <travelnotes></travelnotes>
       </div>
+      <!-- nav -->
       <div class="mfw-aside">
+        <!-- 安全提示 -->
         <safetyPrevention class="asidebox"></safetyPrevention>
+        <!-- 旅行专栏 -->
         <traveller class="asidebox"></traveller>
+        <!-- 旅行攻略 -->
         <gonglve class="asidebox"></gonglve>
+        <!-- 最新活动 -->
+        <activity class="asidebox"></activity>
+        <!-- 未知旅行实验室 -->
+        <laboratory class="asidebox"></laboratory>
+        <!-- 加入马蜂窝 -->
+        <joinmfw class="asidebox"></joinmfw>
+        <!-- 最新资讯 -->
+        <mfwnews class="asidebox"></mfwnews>
       </div>
+    </div>
+    <!-- 底部 -->
+    <div class="footer">
+
     </div>
   </div>
 </template>
@@ -29,6 +45,10 @@ import travelnotes from 'components/home/travelnotes'
 import safetyPrevention from 'components/common/safetyPrevention'
 import traveller from 'components/home/traveller'
 import gonglve from 'components/home/gonglve'
+import activity from 'components/home/activity'
+import laboratory from 'components/home/laboratory'
+import joinmfw from 'components/home/joinmfw'
+import mfwnews from 'components/home/mfwnews'
 export default {
   name: 'home',
   components: {
@@ -37,7 +57,11 @@ export default {
     travelnotes,
     safetyPrevention,
     traveller,
-    gonglve
+    gonglve,
+    activity,
+    laboratory,
+    joinmfw,
+    mfwnews
   }
 }
 </script>
