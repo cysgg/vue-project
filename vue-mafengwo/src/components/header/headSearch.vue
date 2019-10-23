@@ -38,7 +38,6 @@ export default {
   position relative
   .head-search-wrap
     background none
-    background-color #fff
     border 0 none
     padding 14px 0 14px 16px
     height 30px

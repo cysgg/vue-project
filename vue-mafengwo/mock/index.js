@@ -1,5 +1,7 @@
 import Mock from 'mockjs'
+import header from './header/index'
 import home from './home/index'
+import mdd from './mdd/index'
 
 // 延时200-600毫秒请求到数据
 Mock.setup({
@@ -7,7 +9,9 @@ Mock.setup({
 })
 
 const mocks = [
-  ...home
+  ...header,
+  ...home,
+  ...mdd
 ]
 
 mocks.forEach(route => {

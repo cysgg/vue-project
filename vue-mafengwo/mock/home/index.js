@@ -1,4 +1,3 @@
-import header from './header'
 import slider from './slider'
 import travelnotesHot from './travelnotesHot'
 import travelnotesNew from './travelnotesNew'
@@ -10,7 +9,6 @@ import joinmfw from './joinmfw'
 import mfwnews from './mfwnews'
 
 export default [
-  header,
   slider,
   travelnotesHot,
   travelnotesNew,

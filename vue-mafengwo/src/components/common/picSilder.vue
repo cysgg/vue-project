@@ -114,7 +114,7 @@ export default {
           margin 0
     .show-title
       position absolute
-      top 15px
+      top 65px
       font-size 20px
       left 50%
       margin-left -500px

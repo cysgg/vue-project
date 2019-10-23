@@ -1,5 +1,5 @@
 <template>
-  <div class="tabber">
+  <div class="tabber" :class="{'headerOpacity': $route.meta.headerOpacity}">
     <div class="header-wrap">
       <div class="head-logo">
         <router-link class="mfw-logo" to="/" tag="a"></router-link>
@@ -39,8 +39,6 @@ export default {
       navList: []
     }
   },
-  computed: {
-  },
   components: {
     headSearch,
     loginArea
@@ -66,13 +64,14 @@ export default {
   left 0
   top 0
   right 0
+  background-color #fff
+  z-index 111
   .header-wrap
     width 1180px
-    height 68px
+    height 58px
     margin 0 auto
     position relative
     z-index 2
-    background-color #ffffff
     .head-logo
       position relative
       padding 13px 0
@@ -113,12 +112,41 @@ export default {
       .head-nav-li-active
         a
           background-color $theme_color
-          color #fff
+          color #fff !important
           &:hover
-            color #fff
+            color #333
           .mfwzx-logo
             width 75px
             height 58px
             background url('../../assets/images/mfwzx_active.png') no-repeat center
             background-size 75px 30px
+
+.headerOpacity
+  background none
+  .header-wrap
+    .head-logo
+      .mfw-logo
+        background url('../../assets/images/logo2.png') no-repeat 0 0
+    .head-nav
+      color #fff
+      .head-nav-li
+        a
+          color #fff
+          .mfwzx-logo
+            background url('../../assets/images/mfwzx_active.png') no-repeat center
+            background-size 75px 30px
+  &:hover
+      background-color #fff
+      .header-wrap
+        .head-logo
+          .mfw-logo
+            background url('../../assets/images/logo1.png') no-repeat 0 0
+        .head-nav
+          color #333
+          .head-nav-li
+            a
+              color #333
+              .mfwzx-logo
+                background url('../../assets/images/mfwzx.png') no-repeat center
+                background-size 75px 30px
 </style>

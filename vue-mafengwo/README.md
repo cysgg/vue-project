@@ -1,10 +1,10 @@
 # 马蜂窝项目
 ## api
 ### home
-- header 
+- header 头部
   1. /api/home/header/tab_list_info
     头部导航列表
-- home
+- home 首页
   1. /api/home/slider/slider_info_list
     首页轮播数据
   2. /api/home/travelnotes/travelnotesHot_info_list
@@ -19,3 +19,10 @@
     首页最新活动数据
   7. /api/home/joinmfw/joinmfw_info
     首页加入马蜂窝数据
+- mdd 目的地
+  1. /api/mdd/focus/focus_info
+    目的地大图数据
+  2. /api/mdd/hotmdd/hotmdd_info_list
+    热门目的地数据
+  3. /api/mdd/seasonRecommend/seasonRecommend_info_list
+    当季推荐数据

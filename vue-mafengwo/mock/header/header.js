@@ -1,5 +1,5 @@
 const header = {
-  url: /\/api\/home\/header\/tab_list_info/,
+  url: /\/api\/header\/header\/tab_list_info/,
   type: 'get',
   response: {
     code: 200,

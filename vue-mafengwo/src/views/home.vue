@@ -31,10 +31,6 @@
         <mfwnews class="asidebox"></mfwnews>
       </div>
     </div>
-    <!-- 底部 -->
-    <div class="footer">
-
-    </div>
   </div>
 </template>
 
@@ -70,7 +66,7 @@ export default {
 .mfw-focus
   position relative
   z-index 20
-  margin 58px 0 20px 0
+  margin 0 0 20px 0
   clear both
 .mfw-container
   width 1000px
