@@ -33,6 +33,14 @@ export default new Router({
         keepAlive: false,
         headerOpacity: true
       }
+    }, {
+      path: '/gonglve',
+      name: 'lygl',
+      component: __loadView__('lygl'),
+      meta: {
+        keepAlive: false,
+        headerOpacity: false
+      }
     }
   ]
 })

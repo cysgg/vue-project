@@ -26,3 +26,7 @@
     热门目的地数据
   3. /api/mdd/seasonRecommend/seasonRecommend_info_list
     当季推荐数据
+  4. /api/mdd/catemdd/catemdd_info_list
+    主题精选数据
+  5. /api/mdd/qqmdd/qqmdd_info_list
+    全球目的地数据
