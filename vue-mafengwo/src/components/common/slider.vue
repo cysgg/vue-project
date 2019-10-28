@@ -7,7 +7,7 @@
         :currItem="currItem"
       ></slot>
     </div>
-    <div class="slide-ol">
+    <div :class="olClass ? olClass : 'slide-ol'">
       <div
         v-for="(item, index) in showInfoList"
         :key="index + item"
@@ -28,6 +28,9 @@ export default {
   props: {
     showInfoList: {
       type: Array
+    },
+    olClass: {
+      type: String
     }
   },
   data () {
@@ -76,4 +79,9 @@ export default {
   right 14px
   top 120px
   width 90px
+.glslide-ol
+  position absolute
+  right 26px
+  bottom 24px
+  width 140px
 </style>

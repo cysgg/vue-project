@@ -1,5 +1,5 @@
-import { getUrlParam } from '@/utils/common.js'
 import travelnotesList from '../json/travelnoteHot'
+import { getUrlParam, selectPLList } from '@/utils/common.js'
 import Mock from 'mockjs'
 
 const travelnotesHot = {
@@ -7,9 +7,7 @@ const travelnotesHot = {
   type: 'get',
   response: options => {
     let {page, limit} = getUrlParam(options.url)
-    let start = (page - 1) * limit
-    let end = page * limit
-    let travelnotesMock = travelnotesList.slice(start, end)
+    let travelnotesMock = selectPLList(travelnotesList, page, limit)
     let total = travelnotesList.length
     return Mock.mock({
       code: 200,

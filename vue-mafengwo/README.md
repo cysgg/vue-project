@@ -30,3 +30,10 @@
     主题精选数据
   5. /api/mdd/qqmdd/qqmdd_info_list
     全球目的地数据
+- lygl 旅游攻略
+  1. /api/lygl/gldh/gldh_info_list
+    旅游导航数据
+  2. /api/lygl/glSlider/glSlider_info_list
+    旅游攻略轮播数据
+  3. /api/lygl/tjgl/tjgl_info_list
+    推荐攻略数据

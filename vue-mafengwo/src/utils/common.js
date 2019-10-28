@@ -8,3 +8,7 @@ export function getUrlParam (url) {
     return pre
   }, {})
 }
+
+export function selectPLList (list, page, limit) {
+  return list.slice((page - 1) * limit, page * limit)
+}

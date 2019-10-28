@@ -25,6 +25,7 @@
       <head-search @search="search"></head-search>
       <login-area></login-area>
     </div>
+    <div v-if="!$route.meta.headerOpacity" class="shadow"></div>
   </div>
 </template>
 
@@ -66,6 +67,15 @@ export default {
   right 0
   background-color #fff
   z-index 111
+  .shadow
+    position absolute
+    left 0
+    bottom -2px
+    width 100%
+    height 2px
+    border-top 1px solid #d6d6d6
+    background-color rgba(0, 0, 0, .06)
+    overflow hidden
   .header-wrap
     width 1180px
     height 58px

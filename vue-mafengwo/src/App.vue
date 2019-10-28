@@ -5,7 +5,7 @@
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive"/>
     </keep-alive>
-    <router-view  v-if="!$route.meta.keepAlive"/>
+    <router-view v-if="!$route.meta.keepAlive"/>
     <!-- 底部 -->
     <footerBar></footerBar>
   </div>
@@ -17,7 +17,7 @@ import footerBar from 'components/footer/footerBar'
 export default {
   name: 'App',
   components: {
-    'tabBar': tabBar,
+    tabBar,
     footerBar
   }
 }
@@ -34,6 +34,7 @@ body
   font-family Arial,"Lucida Grande","Microsoft Yahei","Hiragino Sans GB","Hiragino Sans GB W3",SimSun,"PingFang SC",STHeiti
 .body-mt
   margin-top 58px
+  overflow hidden
 .row
   padding 40px 0
   width 1000px
