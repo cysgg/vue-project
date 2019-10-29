@@ -9,5 +9,11 @@ export default {
   },
   getTjglInfo (params) {
     return fetchGet('/api/lygl/tjgl/tjgl_info_list', params)
+  },
+  getRankInfo () {
+    return fetchGet('/api/lygl/rank/rank_info_list')
+  },
+  getLyglmapInfo () {
+    return fetchGet('/api/lygl/lyglmap/lyglmap_info_list')
   }
 }

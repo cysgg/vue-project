@@ -7,7 +7,7 @@
       <glSlider class="slide"></glSlider>
     </div>
     <div class="gonglve_wrap">
-      <tjgl class="cont-main"></tjgl>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -15,13 +15,11 @@
 <script>
 import mddNav from 'components/lygl/mddNav'
 import glSlider from 'components/lygl/glSlider'
-import tjgl from 'components/lygl/tjgl'
 export default {
   name: 'lygl',
   components: {
     mddNav,
-    glSlider,
-    tjgl
+    glSlider
   }
 }
 </script>

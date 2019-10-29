@@ -60,23 +60,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.slideRight-enter
-  transform translateX(100%)
-  position absolute
-.slideRight-leave-to
-  transform translateX(-100%)
-  position absolute
-.slideLeft-enter
-  transform translateX(-100%)
-  position absolute
-.slideLeft-leave-to
-  transform translateX(100%)
-  position absolute
-.slideRight-enter-active,
-.slideRight-leave-active,
-.slideLeft-enter-active,
-.slideLeft-leave-active
-  transition: transform .5s
 .activity
   height 214px !important
   p

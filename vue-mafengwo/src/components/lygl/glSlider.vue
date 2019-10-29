@@ -1,12 +1,14 @@
 <template>
   <div class="gl-slider">
-    <slider :showInfoList="glSliderList" :olClass="'glslide-ol'">
+    <slider @slideToRight="slideRight" @slideToLeft="slideLeft" :showInfoList="glSliderList" :olClass="'glslide-ol'">
       <template v-slot:showArea="{currItem}">
-        <div class="show-wrap">
-          <router-link to="" tag="a">
-            <img :src="currItem" alt="">
-          </router-link>
-        </div>
+        <transition  tag="div" :name="slideDec">
+          <div :key="currItem" class="show-wrap">
+            <router-link to="" tag="a">
+              <img v-lazy="currItem" alt="">
+            </router-link>
+          </div>
+        </transition>
       </template>
       <template v-slot:clickArea="{scopeItem}">
         <div class="li" :class="{'on': scopeItem.currIndex === scopeItem.index}"></div>
@@ -25,7 +27,8 @@ export default {
   },
   data () {
     return {
-      glSliderList: []
+      glSliderList: [],
+      slideDec: 'slideRight'
     }
   },
   created () {
@@ -33,6 +36,14 @@ export default {
       console.log(res)
       this.glSliderList = res.glSliderList
     })
+  },
+  methods: {
+    slideRight () {
+      this.slideDec = 'slideRight'
+    },
+    slideLeft () {
+      this.slideDec = 'slideLeft'
+    }
   }
 }
 </script>

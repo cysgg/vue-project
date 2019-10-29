@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const __loadView__ = filename => () => import(`@/views/${filename}.vue`)
+const __loadChildCom__ = (dir, filename) => () => import(`components/${dir}/${filename}.vue`)
 
 Vue.use(Router)
 
@@ -17,7 +18,8 @@ export default new Router({
     {
       path: '/',
       redirect: '/home'
-    }, {
+    },
+    {
       path: '/home',
       name: 'home',
       component: __loadView__('home'),
@@ -25,7 +27,8 @@ export default new Router({
         keepAlive: false,
         headerOpacity: true
       }
-    }, {
+    },
+    {
       path: '/mdd',
       name: 'mdd',
       component: __loadView__('mdd'),
@@ -33,14 +36,19 @@ export default new Router({
         keepAlive: false,
         headerOpacity: true
       }
-    }, {
+    },
+    {
       path: '/gonglve',
-      name: 'lygl',
       component: __loadView__('lygl'),
       meta: {
         keepAlive: false,
         headerOpacity: false
-      }
+      },
+      children: [{
+        path: 'lyglIndex',
+        name: 'lyglIndex',
+        component: __loadChildCom__('lygl', 'lyglIndex')
+      }]
     }
   ]
 })

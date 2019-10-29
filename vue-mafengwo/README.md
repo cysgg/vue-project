@@ -37,3 +37,7 @@
     旅游攻略轮播数据
   3. /api/lygl/tjgl/tjgl_info_list
     推荐攻略数据
+  4. /api/lygl/rank/rank_info_list
+    旅游攻略导航排名数据
+  5. /api/lygl/lyglmap/lyglmap_info_list
+    旅游攻略导航分类数据
