@@ -89,7 +89,6 @@ export default {
   },
   computed: {
     hasMore () {
-      console.log(this.tjglQuery.page, this.tjglQuery.limit, this.total)
       return this.tjglQuery.page * this.tjglQuery.limit < this.total
     }
   },

@@ -2,7 +2,7 @@
   <div @mouseleave="currIndex = -1">
     <div
       class="drop-item"
-      v-for="(item, index) in lyglmapList"
+      v-for="(item, index) in lyglMddList"
       :key="index"
       @mouseover="currIndex = index"
       :class="{'drop-open': currIndex === index}"
@@ -18,19 +18,19 @@
 
 <script>
 import dropPop from 'components/lygl/dropPop'
-import api from '@/api/index'
+import { mapGetters } from 'vuex'
 export default {
   name: 'navDrop',
   data () {
     return {
-      lyglmapList: [],
       currIndex: -1
     }
   },
   computed: {
+    ...mapGetters('lygl', ['lyglMddList']),
     dropList () {
       if (this.currIndex > -1) {
-        return this.lyglmapList[this.currIndex].mapList
+        return this.lyglMddList[this.currIndex].mapList
       }
       return []
     }
@@ -39,10 +39,7 @@ export default {
     dropPop
   },
   created () {
-    api.getLyglmapInfo().then(res => {
-      console.log(res)
-      this.lyglmapList = res.lyglmapList
-    })
+    this.$store.dispatch('lygl/getLyglMddList')
   }
 }
 </script>

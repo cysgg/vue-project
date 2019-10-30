@@ -15,5 +15,8 @@ export default {
   },
   getLyglmapInfo () {
     return fetchGet('/api/lygl/lyglmap/lyglmap_info_list')
+  },
+  getLyglItemInfo (params) {
+    return fetchGet('/api/lygl/lyglItem/lyglItem_info_list', params)
   }
 }

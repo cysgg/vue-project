@@ -7,7 +7,7 @@
       <ul class="head-nav">
         <li
           class="head-nav-li"
-          :class="{'head-nav-li-active': $route.path === item.path}"
+          :class="{'head-nav-li-active': $route.path.indexOf(item.path) > -1}"
           v-for="(item ,index) in navList"
           :key="index"
         >

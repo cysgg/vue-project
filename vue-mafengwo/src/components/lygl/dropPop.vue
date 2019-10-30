@@ -7,7 +7,7 @@
           :key="index"
           class="li"
         >
-          <router-link to="" tag="a">{{item.name}}({{item.num}})</router-link>
+          <router-link :to="'lyglItem/'+item.name" tag="a">{{item.name}}({{item.num}})</router-link>
         </div>
       </div>
     </div>

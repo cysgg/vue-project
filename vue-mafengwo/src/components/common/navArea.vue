@@ -36,9 +36,7 @@ export default {
   },
   computed: {
     currItem () {
-      console.log(this.navAreaList[this.currIndex], '------')
       if (this.navAreaList && this.navAreaList.length > 0) {
-        console.log(1)
         return this.navAreaList[this.currIndex]
       }
       return []
