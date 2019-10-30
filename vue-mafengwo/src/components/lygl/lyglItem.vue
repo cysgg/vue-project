@@ -1,12 +1,12 @@
 <template>
   <div>
-    lyglItem
+    <glTab></glTab>
   </div>
 </template>
 
 <script>
+import glTab from 'components/lygl/glTab'
 import api from '@/api/index'
-import { mapGetters } from 'vuex'
 export default {
   name: 'lyglItem',
   data () {
@@ -14,11 +14,10 @@ export default {
       LyglItemList: []
     }
   },
-  computed: {
-    ...mapGetters('lygl', ['lyglMddList'])
+  components: {
+    glTab
   },
   created () {
-    this.$store.dispatch('lygl/getLyglMddList')
     api.getLyglItemInfo({name: this.$route.params.name}).then(res => {
       this.LyglItemList = res.LyglItemList
       console.log(res)
