@@ -98,7 +98,6 @@ export default {
   methods: {
     getTjglList () {
       api.getTjglInfo(this.tjglQuery).then(res => {
-        console.log(res)
         this.tjglList = this.tjglList.concat(res.tjglListMock)
         this.total = res.total
       })

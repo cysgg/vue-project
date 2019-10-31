@@ -13,11 +13,7 @@
       v-for="(lyglMdd, index) in lyglMddList"
       :key="lyglMdd.type + showMoreList[index]"
     >
-      <h3>
-        <router-link to="">
-          {{lyglMdd.type}}
-        </router-link>
-      </h3>
+      <h3>{{lyglMdd.type}}</h3>
       <ol :class="{'auto-height': showMoreList[index]}">
         <li
           v-for="item in lyglMdd.mapList"
