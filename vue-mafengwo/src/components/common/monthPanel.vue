@@ -4,10 +4,11 @@
       <li
         v-for="(day, index) in daysList"
         :key="index"
-        :class="day ? '_j_hover' : 'after'"
+        :class="day && day.bgimg ? '_j_hover' : 'after'"
       >
         <span v-if="!day"></span>
         <em v-if="!day"></em>
+        <em v-if="day && !day.bgimg">{{day.day}}</em>
         <span v-if="day">
           <img v-lazy="day.bgimg" alt="">
         </span>
@@ -43,11 +44,28 @@ export default {
         let firstDay = this.currYear + '-' + this.currMonth + '-' + '01'
         let date = new Date(Date.parse(firstDay))
         let startCount = date.getDay()
-        let endCount = 7 - (this.daysInfo.length + startCount) % 7
-        console.log(startCount, endCount)
-        return new Array(startCount).concat(this.daysInfo, new Array(endCount))
+        let monthLen = new Date(this.currYear, this.currMonth, 0).getDate()
+        let monthList = this.formatMonthList(monthLen, this.daysInfo)
+        let part = (monthList.length + startCount) % 7
+        let endCount = part === 0 ? 0 : 7 - part
+        return new Array(startCount).concat(monthList, new Array(endCount))
       }
       return []
+    }
+  },
+  methods: {
+    formatMonthList (len, list) {
+      if (len > list.length) {
+        return new Array(len).fill(1).map((v, i) => {
+          if (i < list.length) {
+            return list[i]
+          } else {
+            return {day: i + 1}
+          }
+        })
+      } else {
+        return list
+      }
     }
   }
 }

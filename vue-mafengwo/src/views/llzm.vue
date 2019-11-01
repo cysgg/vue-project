@@ -52,6 +52,8 @@ export default {
 .wrpper
   background-image url(http://images.mafengwo.net/images/app/cale/cbg0612.jpg)
   padding-bottom 40px
+  padding-top 58px
+  min-height 100vh
   background-position center top
   background-repeat no-repeat
   background-size cover

@@ -56,7 +56,7 @@ export default new Router({
       component: __loadView__('llzm'),
       meta: {
         keepAlive: false,
-        headerOpacity: false
+        headerOpacity: true
       }
     }
   ]
