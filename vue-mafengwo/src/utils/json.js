@@ -1,4 +1,4 @@
-let dateMonth = {
+const dateMonth = {
   '01': 'Jan',
   '02': 'Feb',
   '03': 'Mar',
@@ -13,6 +13,9 @@ let dateMonth = {
   '12': 'Dec'
 }
 
+const week = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
+
 export {
-  dateMonth
+  dateMonth,
+  week
 }

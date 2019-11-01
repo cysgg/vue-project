@@ -23,8 +23,14 @@ function formatMonthAndDay (date) {
   return `${times[1]}月${times[2]}日`
 }
 
+function formatEnMonth (month) {
+  let formatMonth = parseInt(month) > 9 ? month : '0' + month
+  return dateMonth[formatMonth]
+}
+
 export {
   formatDay,
   formatMonAndYear,
-  formatMonthAndDay
+  formatMonthAndDay,
+  formatEnMonth
 }

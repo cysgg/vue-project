@@ -44,19 +44,20 @@ export default new Router({
         keepAlive: false,
         headerOpacity: false
       },
-      children: [{
-        path: '',
-        name: 'gonglve',
-        redirect: 'lyglIndex'
-      }, {
-        path: 'lyglIndex',
-        name: 'lyglIndex',
-        component: __loadChildCom__('lygl', 'lyglIndex')
-      }, {
-        path: 'lyglItem/:name',
-        name: 'lyglItem',
-        component: __loadChildCom__('lygl', 'lyglItem')
-      }]
+      children: [
+        {path: '', name: 'gonglve', redirect: 'lyglIndex'},
+        {path: 'lyglIndex', name: 'lyglIndex', component: __loadChildCom__('lygl', 'lyglIndex')},
+        {path: 'lyglItem/:name', name: 'lyglItem', component: __loadChildCom__('lygl', 'lyglItem')}
+      ]
+    },
+    {
+      path: '/llzm',
+      name: 'llzm',
+      component: __loadView__('llzm'),
+      meta: {
+        keepAlive: false,
+        headerOpacity: false
+      }
     }
   ]
 })

@@ -41,3 +41,6 @@
     旅游攻略导航排名数据
   5. /api/lygl/lyglmap/lyglmap_info_list
     旅游攻略导航分类数据
+- llzm 历历在目
+  1. /api/llzm/calendar/calendar_info_list
+    历历在目日历数据
