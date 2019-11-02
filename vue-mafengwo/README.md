@@ -44,3 +44,6 @@
 - llzm 历历在目
   1. /api/llzm/calendar/calendar_info_list
     历历在目日历数据
+- djd 订酒店
+  1. /api/djd/ztzs/ztzs_info_list
+    主题住宿数据

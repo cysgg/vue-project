@@ -6,14 +6,14 @@
         :key="index"
         :class="day && day.bgimg ? '_j_hover' : 'after'"
       >
-        <span v-if="!day"></span>
+        <span v-if="!day || !day.bgimg"></span>
         <em v-if="!day"></em>
         <em v-if="day && !day.bgimg">{{day.day}}</em>
-        <span v-if="day">
+        <span v-if="day && day.bgimg">
           <img v-lazy="day.bgimg" alt="">
         </span>
-        <em v-if="day">{{day.day}}</em>
-        <span v-if="day" class="mark">
+        <em v-if="day && day.bgimg">{{day.day}}</em>
+        <span v-if="day && day.bgimg" class="mark">
           <i>{{day.addr}}</i>
           <div class="user">
             <img v-lazy="day.userImg" :title="day.userName" alt="">
@@ -87,9 +87,6 @@ export default {
       height 84px
       position relative
       overflow hidden
-      &:hover
-        .mark
-          visibility visible
       span
         display block
         img
@@ -138,6 +135,10 @@ export default {
             vertical-align top
             width 16px
             height 16px
+    ._j_hover
+      &:hover
+        .mark
+          visibility visible
     .after
       span
         border 1px solid #e6e6e6

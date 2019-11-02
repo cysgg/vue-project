@@ -4,6 +4,7 @@ import home from './home/index'
 import mdd from './mdd/index'
 import lygl from './lygl/index'
 import llzm from './llzm/index'
+import djd from './djd/index'
 
 // 延时200-600毫秒请求到数据
 Mock.setup({
@@ -15,7 +16,8 @@ const mocks = [
   ...home,
   ...mdd,
   ...lygl,
-  ...llzm
+  ...llzm,
+  ...djd
 ]
 
 mocks.forEach(route => {

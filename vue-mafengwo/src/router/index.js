@@ -15,49 +15,31 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      redirect: '/home'
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: __loadView__('home'),
-      meta: {
-        keepAlive: false,
-        headerOpacity: true
-      }
-    },
-    {
-      path: '/mdd',
-      name: 'mdd',
-      component: __loadView__('mdd'),
-      meta: {
-        keepAlive: false,
-        headerOpacity: true
-      }
-    },
+    {path: '/', redirect: '/home'},
+
+    {path: '/home', name: 'home', component: __loadView__('home'), meta: {keepAlive: false, headerOpacity: true}},
+
+    {path: '/mdd', name: 'mdd', component: __loadView__('mdd'), meta: {keepAlive: false, headerOpacity: true}},
+
     {
       path: '/gonglve',
       component: __loadView__('lygl'),
-      meta: {
-        keepAlive: false,
-        headerOpacity: false
-      },
       children: [
         {path: '', name: 'gonglve', redirect: 'lyglIndex'},
-        {path: 'lyglIndex', name: 'lyglIndex', component: __loadChildCom__('lygl', 'lyglIndex')},
-        {path: 'lyglItem/:name', name: 'lyglItem', component: __loadChildCom__('lygl', 'lyglItem')}
+        {path: 'lyglIndex', name: 'lyglIndex', component: __loadChildCom__('lygl', 'lyglIndex'), meta: {keepAlive: false, headerOpacity: false}},
+        {path: 'lyglItem/:name', name: 'lyglItem', component: __loadChildCom__('lygl', 'lyglItem'), meta: {keepAlive: false, headerOpacity: false}}
       ]
     },
+
+    {path: '/llzm', name: 'llzm', component: __loadView__('llzm'), meta: {keepAlive: false, headerOpacity: true}},
+
     {
-      path: '/llzm',
-      name: 'llzm',
-      component: __loadView__('llzm'),
-      meta: {
-        keepAlive: false,
-        headerOpacity: true
-      }
+      path: '/djd',
+      component: __loadView__('djd'),
+      children: [
+        {path: '', name: 'djd', redirect: 'djdIndex'},
+        {path: 'djdIndex', name: 'djdIndex', component: __loadChildCom__('djd', 'djdIndex'), meta: {keepAlive: false, headerOpacity: false}}
+      ]
     }
   ]
 })
