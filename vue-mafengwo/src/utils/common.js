@@ -12,3 +12,15 @@ export function getUrlParam (url) {
 export function selectPLList (list, page, limit) {
   return list.slice((page - 1) * limit, page * limit)
 }
+
+export function debounce (fn, time) {
+  let timer = null
+  return function (...args) {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(null, args)
+    }, time || 200)
+  }
+}

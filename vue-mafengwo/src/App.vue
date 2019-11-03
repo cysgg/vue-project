@@ -75,4 +75,7 @@ body
       font-weight normal
       color #333
       line-height 26px
+.hs-icon
+  position absolute
+  background url(assets/images/hotel-detail-icon8.png) no-repeat -70px -200px
 </style>

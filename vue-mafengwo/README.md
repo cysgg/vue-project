@@ -47,3 +47,7 @@
 - djd 订酒店
   1. /api/djd/ztzs/ztzs_info_list
     主题住宿数据
+  2. /api/djd/tjjd/tjjd_info_list
+    特价酒店数据
+  3. /api/djd/inputPop/inputPop_info_list
+    搜索弹出框数据

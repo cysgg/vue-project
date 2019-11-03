@@ -14,18 +14,18 @@ const header = {
         value: '旅游功略',
         path: '/gonglve'
       },{
-        value: '去旅行',
-        path: '/qlx'
-      },{
-        value: '机票',
-        path: '/jp'
-      },{
+      //   value: '去旅行',
+      //   path: '/qlx'
+      // },{
+      //   value: '机票',
+      //   path: '/jp'
+      // },{
         value: '订酒店',
         path: '/djd'
       },{
-        value: '社区',
-        path: '/sq'
-      },{
+      //   value: '社区',
+      //   path: '/sq'
+      // },{
         value: 'APP',
         path: '/app'
       }]
