@@ -1,7 +1,6 @@
 # 马蜂窝项目
 ## api
-### home
-- header 头部
+- app 头部
   1. /api/home/header/tab_list_info
     头部导航列表
 - home 首页
@@ -51,3 +50,43 @@
     特价酒店数据
   3. /api/djd/inputPop/inputPop_info_list
     搜索弹出框数据
+
+
+## 组件
+- common 公共组件
+  1. asidebox
+    home 左侧 侧边栏
+  2. categoryPanel
+  3. digSlider
+    点轮播 
+    1. /home 侧边栏 轮播 
+    2. /lygl 旅游攻略 轮播
+  4. mddInput
+    目的地输入框 /djd 目的地输入框
+  5. monthPanel
+    月日历的显示框 /llzm 历历在目 主要日历单月组件
+    todo -> 做一个逻辑日历组件
+  6. navArea
+    nav 显示区 /mdd 几个组件的公用区块， 和navPanel配合使用
+  7. navPanel
+    请看 navArea
+  8. paginationContent
+    分页组件 /home 推荐攻略分页组件
+  9. picSilder
+    图轮播 /home 大轮播组件 
+    todo -> 用slider逻辑组件重写
+  10. safetyPrevention
+    安全提示组件， 马蜂窝组件 /home 安全提示
+  11. slider
+    轮播逻辑组件
+  12. timeInput
+    时间输入框和选择日期整合组件 /djd 时间选择输入框
+  13. timePanel
+    时间日期选择展示框 被封装于timeInput
+    todo -> 做一个逻辑日历组件
+  14. travelList
+    全球旅游目的地组件，瀑布流 /mdd 全球目的地
+  15. peopleinput
+    人数选择组件 /djd 搜索选择人数组件
+  16. selectPanel
+    peopleinput组件内部select组件

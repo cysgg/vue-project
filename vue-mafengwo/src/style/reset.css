@@ -114,3 +114,8 @@ img {
     border: 0;
     vertical-align: middle;
 }
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
