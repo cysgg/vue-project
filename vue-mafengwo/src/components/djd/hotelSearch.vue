@@ -6,9 +6,9 @@
       @blurHolder="blurHolder"
       @focusHolder="focusHolder"
       :inputValue.sync="searchValue"
-      placeholder="出行目的地"
+      placeholder="出行目的地,如a"
       class="hotel-input"
-    >
+      >
       <template v-slot:popArea>
         <div
           class="not-cont"
@@ -64,27 +64,51 @@
         </div>
       </template>
     </mddInput>
+    <timeInput
+      placeholder="入住日期"
+      class="timeInput"
+      @dateChange="getNewStateDate"
+      >
+    </timeInput>
+    <timeInput
+      placeholder="离店日期"
+      class="timeInput"
+      @dateChange="getNewEndDate"
+    >
+    </timeInput>
+    <peopleInput
+      class="peopleInput"
+      @peopleCheck="getNewPeopleCount"
+      :peopelContent="peopleCount"
+    ></peopleInput>
   </div>
 </template>
 
 <script>
 import api from '@/api/index'
 import mddInput from 'components/common/mddInput'
+import timeInput from 'components/common/timeInput'
+import peopleInput from 'components/common/peopleInput'
 import { debounce } from '@/utils/common'
 export default {
   name: 'hotelSearch',
   components: {
-    mddInput
+    mddInput,
+    timeInput,
+    peopleInput
   },
   data () {
     return {
-      hotelMddList: [],
-      inputTipsList: [],
-      searchValue: '',
-      showPop: false,
-      showPanel: false,
-      isblur: true,
-      inputTipsApi: null,
+      hotelMddList: [], // 搜索框输入前初始提示数据
+      inputTipsList: [], // 搜索框输入前提示数据
+      searchValue: '', // 搜索框内容
+      startDateList: [], // 开始的日期数组 [year, month, day]
+      EndDateList: [], // 结束的日期数组 [year, month, day]
+      showPop: false, // 是否显示提示
+      showPanel: false, // 是否显示初始提示
+      isblur: true, // 搜索是否失焦
+      debounceTipsApi: null, // 防抖的数据提示api
+      peopleCountList: [], // 人数的数组 [adultNum, kidNum]
       classJson: {
         'mdd': 'sicon-place',
         'scenic': 'sicon-scenic',
@@ -92,16 +116,24 @@ export default {
       }
     }
   },
+  computed: {
+    peopleCount () {
+      if (this.peopleCountList.length > 0) {
+        return this.peopleCountList[0] + '成人,' + this.peopleCountList[1] + '儿童'
+      }
+      return '人数未定'
+    }
+  },
   created () {
     api.getInputPopInfo().then(res => {
       console.log(res)
       this.hotelMddList = res.hotelMddList
     })
-    this.inputTipsApi = debounce(this.inputTipHolder, 200)
+    this.debounceTipsApi = debounce(this.inputTipHolder, 200)
   },
   methods: {
     judgePopOrPanel () {
-      this.inputTipsApi()
+      this.debounceTipsApi()
       if (this.searchValue) {
         this.showPop = false
       } else {
@@ -111,7 +143,7 @@ export default {
     },
     focusHolder () {
       this.judgePopOrPanel()
-      this.inputTipsApi()
+      this.debounceTipsApi()
       this.isblur = false
     },
     blurHolder () {
@@ -136,6 +168,15 @@ export default {
     },
     searchClickHolder (val) {
       this.searchValue = val
+    },
+    getNewStateDate (list) {
+      this.startDateList = list
+    },
+    getNewEndDate (list) {
+      this.EndDateList = list
+    },
+    getNewPeopleCount (list) {
+      this.peopleCountList = list
     }
   }
 }
@@ -148,8 +189,11 @@ export default {
   position relative
   z-index 9
   .hotel-input
-    width 340px
+    width 352px
     height 45px
+    float left
+    padding-right 20px
+    margin-right 10px
   .not-cont
     position absolute
     width 725px
@@ -242,4 +286,15 @@ export default {
             .skey
               color #333
               margin-right 12px
+  .timeInput
+    position relative
+    float left
+    height 47px
+    margin-right 10px
+    cursor pointer
+  .peopleInput
+    position relative
+    float left
+    height 47px
+    margin-right 10px
 </style>
