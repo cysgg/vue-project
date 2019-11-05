@@ -57,8 +57,9 @@
   1. asidebox
     home 左侧 侧边栏
   2. categoryPanel
+    /lygl 侧边栏第四个弹出框
   3. digSlider
-    点轮播 
+    点轮播
     1. /home 侧边栏 轮播 
     2. /lygl 旅游攻略 轮播
   4. mddInput
@@ -67,9 +68,9 @@
     月日历的显示框 /llzm 历历在目 主要日历单月组件
     todo -> 做一个逻辑日历组件
   6. navArea
-    nav 显示区 /mdd 几个组件的公用区块， 和navPanel配合使用
+    nav 显示区 /mdd 几个组件的公用区块
   7. navPanel
-    请看 navArea
+    /lygl 导航侧边栏前三个 弹出框
   8. paginationContent
     分页组件 /home 推荐攻略分页组件
   9. picSilder

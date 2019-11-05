@@ -1,6 +1,5 @@
 <template>
   <div class="wrpper">
-    llzm
     <calendar
       v-for="(calendar, index) in calendarList"
       :key="index"

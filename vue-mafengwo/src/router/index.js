@@ -38,7 +38,8 @@ export default new Router({
       component: __loadView__('djd'),
       children: [
         {path: '', name: 'djd', redirect: 'djdIndex'},
-        {path: 'djdIndex', name: 'djdIndex', component: __loadChildCom__('djd', 'djdIndex'), meta: {keepAlive: false, headerOpacity: false}}
+        {path: 'djdIndex', name: 'djdIndex', component: __loadChildCom__('djd', 'djdIndex'), meta: {keepAlive: false, headerOpacity: false}},
+        {path: 'hotelMdd', name: 'hotelMdd', component: __loadChildCom__('djd', 'hotelMdd'), meta: {keepAlive: false, headerOpacity: false}}
       ]
     }
   ]

@@ -1,5 +1,5 @@
 const zsList = [{
-  "tabName": "爱彼迎民宿推荐",
+  "navbarTitle": "爱彼迎民宿推荐",
   "imgList": [{
     "imgUrl": "https://p2-q.mafengwo.net/s10/M00/C6/20/wKgBZ1oFemiADKBPADMKdlIYxCU40.jpeg?imageMogr2%2Fthumbnail%2F%21636x480r%2Fgravity%2FCenter%2Fcrop%2F%21636x480%2Fquality%2F90",
     "region": "巴厘岛",
@@ -26,7 +26,7 @@ const zsList = [{
     "caption": "中国"
   }]
 }, {
-  "tabName": "私人海滩",
+  "navbarTitle": "私人海滩",
   "imgList": [{
     "imgUrl": "https://p3-q.mafengwo.net/s10/M00/5E/81/wKgBZ1mC9HeAAAMYAAG6ogNAjvE92.jpeg?imageMogr2%2Fthumbnail%2F%21636x480r%2Fgravity%2FCenter%2Fcrop%2F%21636x480%2Fquality%2F90",
     "region": "长滩岛",
@@ -53,7 +53,7 @@ const zsList = [{
     "caption": "海南"
   }]
 }, {
-  "tabName": "超值酒店",
+  "navbarTitle": "超值酒店",
   "imgList": [{
     "imgUrl": "https://n2-q.mafengwo.net/s10/M00/5E/78/wKgBZ1mC9HWAbTMdAADNqTBp4GM25.jpeg?imageMogr2%2Fthumbnail%2F%21636x480r%2Fgravity%2FCenter%2Fcrop%2F%21636x480%2Fquality%2F90",
     "region": "塞班岛",
@@ -80,7 +80,7 @@ const zsList = [{
     "caption": "新加坡"
   }]
 }, {
-  "tabName": "吃货根据地",
+  "navbarTitle": "吃货根据地",
   "imgList": [{
     "imgUrl": "https://n1-q.mafengwo.net/s10/M00/2B/62/wKgBZ1mNaUCAM69qAAMYG3TYJv488.jpeg?imageMogr2%2Fthumbnail%2F%21636x480r%2Fgravity%2FCenter%2Fcrop%2F%21636x480%2Fquality%2F90",
     "region": "成都",
@@ -107,7 +107,7 @@ const zsList = [{
     "caption": "甘肃"
   }]
 }, {
-  "tabName": "周末好去处",
+  "navbarTitle": "周末好去处",
   "imgList": [{
     "imgUrl": "https://n4-q.mafengwo.net/s10/M00/5E/84/wKgBZ1mC9HeADwEbAAXqV9zWTPs05.jpeg?imageMogr2%2Fthumbnail%2F%21636x480r%2Fgravity%2FCenter%2Fcrop%2F%21636x480%2Fquality%2F90",
     "region": "崇明岛",
@@ -134,7 +134,7 @@ const zsList = [{
     "caption": "秦皇岛"
   }]
 }, {
-  "tabName": "潜水胜地",
+  "navbarTitle": "潜水胜地",
   "imgList": [{
     "imgUrl": "https://b4-q.mafengwo.net/s10/M00/2B/69/wKgBZ1mNaUGATfaKAAY-tv5C_cs48.jpeg?imageMogr2%2Fthumbnail%2F%21636x480r%2Fgravity%2FCenter%2Fcrop%2F%21636x480%2Fquality%2F90",
     "region": "仙本那",
