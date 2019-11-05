@@ -60,6 +60,14 @@ export default {
   props: {
     dateList: {
       type: Array
+    },
+    topDate: {
+      type: Array,
+      default: () => []
+    },
+    floorDate: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
@@ -70,9 +78,6 @@ export default {
     }
   },
   computed: {
-    currDate () {
-      return new Date(this.currYear, this.currMonth, 1)
-    },
     startDateStr () {
       let trList = getMonthDayList(this.currYear, this.currMonth)
       return trList.map((v, i, arr) => {
@@ -81,6 +86,12 @@ export default {
     },
     monthStr () {
       return dateCMonth[this.currMonth]
+    },
+    floor () {
+      return this.floorDate.length > 0 ? this.floorDate : this.defaultFloorDate()
+    },
+    top () {
+      return this.topDate.length > 0 ? this.topDate : this.defaultTopDate()
     }
   },
   watch: {
@@ -89,24 +100,67 @@ export default {
         this.currYear = nv[0]
         this.currMonth = nv[1]
       }
+    },
+    topDate (nv) {
+      if (nv.length > 0) {
+        this.currYear = nv[0]
+        this.currMonth = nv[1]
+      }
+    },
+    floorDate (nv) {
+      if (nv.length > 0) {
+        this.currYear = nv[0]
+        this.currMonth = nv[1]
+      }
     }
   },
   methods: {
+    defaultTopDate () {
+      let nextYear = new Date().getFullYear() + 1
+      return [nextYear, 12, 31]
+    },
+    defaultFloorDate () {
+      let lastYear = new Date().getFullYear() - 1
+      return [lastYear, 1, 1]
+    },
     pagePre (e) {
-      this.currMonth--
-      if (this.currMonth === 0) {
-        this.currYear--
-        this.currMonth = 12
+      let month = this.currMonth
+      let year = this.currYear
+      if (--month === 0) {
+        --year
+        month = 12
       }
+      if (year === this.floor[0]) {
+        if (month < this.floor[1]) {
+          return
+        }
+      } else if (year < this.floor[0]) {
+        return
+      }
+      this.currYear = year
+      this.currMonth = month
     },
     pageNext (e) {
-      this.currMonth++
-      if (this.currMonth === 13) {
-        this.currYear++
-        this.currMonth = 1
+      let month = this.currMonth
+      let year = this.currYear
+      if (++month === 13) {
+        ++year
+        month = 1
       }
+      if (year === this.top[0]) {
+        if (month > this.top[1]) {
+          return
+        }
+      } else if (year > this.top[0]) {
+        return
+      }
+      this.currYear = year
+      this.currMonth = month
     },
     selectDay (day) {
+      if ((this.currMonth === this.floor[1] && day < this.floor[2]) || (this.currMonth === this.top[1] && day > this.top[2])) {
+        return
+      }
       console.log(day)
       this.$emit('selectDay', [this.currYear, this.currMonth, day])
     }

@@ -9,7 +9,7 @@
       <i></i>
     </div>
     <div v-show="hasFocus" class="time-wrap">
-      <timePanel :dateList="dateArr" @selectDay="checkDate"></timePanel>
+      <timePanel :topDate="maxDateList" :floorDate="minDateList" :dateList="dateArr" @selectDay="checkDate"></timePanel>
     </div>
   </div>
 </template>
@@ -22,6 +22,12 @@ export default {
     placeholder: {
       type: String,
       default: '日期'
+    },
+    maxDateList: {
+      type: Array
+    },
+    minDateList: {
+      type: Array
     }
   },
   components: {

@@ -51,14 +51,14 @@ export default {
 .mddInput
   position relative
   input
-    width 100%
+    width calc(100% - 12px)
     font-size 16px
     color #333
     display block
     height 100%
     border-radius 4px
     border 1px solid #999
-    padding 0 10px
+    padding 0 0 0 10px
     &:focus
       border-color $theme_color
       box-shadow 0 0 4px $theme_color

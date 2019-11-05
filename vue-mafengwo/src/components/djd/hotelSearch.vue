@@ -67,12 +67,14 @@
     <timeInput
       placeholder="入住日期"
       class="timeInput"
-      @dateChange="getNewStateDate"
+      :maxDateList="endDateList"
+      @dateChange="getNewStartDate"
       >
     </timeInput>
     <timeInput
       placeholder="离店日期"
       class="timeInput"
+      :minDateList="startDateList"
       @dateChange="getNewEndDate"
     >
     </timeInput>
@@ -81,6 +83,9 @@
       @peopleCheck="getNewPeopleCount"
       :peopelContent="peopleCount"
     ></peopleInput>
+    <div @click="searchSubmit" class="btn-search">
+      <i></i>
+    </div>
   </div>
 </template>
 
@@ -103,7 +108,7 @@ export default {
       inputTipsList: [], // 搜索框输入前提示数据
       searchValue: '', // 搜索框内容
       startDateList: [], // 开始的日期数组 [year, month, day]
-      EndDateList: [], // 结束的日期数组 [year, month, day]
+      endDateList: [], // 结束的日期数组 [year, month, day]
       showPop: false, // 是否显示提示
       showPanel: false, // 是否显示初始提示
       isblur: true, // 搜索是否失焦
@@ -117,11 +122,22 @@ export default {
     }
   },
   computed: {
-    peopleCount () {
+    peopleCount () { // 计算的peopleInput显示内容
       if (this.peopleCountList.length > 0) {
         return this.peopleCountList[0] + '成人,' + this.peopleCountList[1] + '儿童'
       }
       return '人数未定'
+    },
+    searchQuery () { // 跳转hotelMdd 的query
+      if (this.searchValue !== '' && this.startDateList.length > 0 && this.endDateList.length > 0 && this.peopleCountList.length > 0) {
+        return {
+          mdd: this.searchValue,
+          startDate: this.startDateList,
+          endDate: this.endDateList,
+          peopleCountList: this.peopleCountList
+        }
+      }
+      return false
     }
   },
   created () {
@@ -132,7 +148,7 @@ export default {
     this.debounceTipsApi = debounce(this.inputTipHolder, 200)
   },
   methods: {
-    judgePopOrPanel () {
+    judgePopOrPanel () { // 搜索输入提示框和默认提示框显示的计算方法
       this.debounceTipsApi()
       if (this.searchValue) {
         this.showPop = false
@@ -141,23 +157,23 @@ export default {
         this.showPanel = false
       }
     },
-    focusHolder () {
+    focusHolder () { // 搜索 focus
       this.judgePopOrPanel()
       this.debounceTipsApi()
       this.isblur = false
     },
-    blurHolder () {
+    blurHolder () { // 搜索 blur
       this.showPop = false
       this.showPanel = false
       this.isblur = true
     },
-    keydownHolder () {
+    keydownHolder () { // 搜索 keydown
       this.judgePopOrPanel()
     },
-    keyupHolder () {
+    keyupHolder () { // 搜索 keyup
       this.judgePopOrPanel()
     },
-    inputTipHolder () {
+    inputTipHolder () { // 搜索 input
       if (this.searchValue && !this.isblur) {
         api.getInputTipsInfo({val: this.searchValue}).then(res => {
           console.log(res)
@@ -166,17 +182,27 @@ export default {
         })
       }
     },
-    searchClickHolder (val) {
+    searchClickHolder (val) { // 搜索提示框 点击事件
       this.searchValue = val
     },
-    getNewStateDate (list) {
+    getNewStartDate (list) { // 开始时间框 获得开始时间子组件的值
       this.startDateList = list
     },
-    getNewEndDate (list) {
-      this.EndDateList = list
+    getNewEndDate (list) { // 结束时间框 获得结束时间子组件的值
+      this.endDateList = list
     },
-    getNewPeopleCount (list) {
+    getNewPeopleCount (list) { // 人数框 获得人数子组件的值
       this.peopleCountList = list
+    },
+    searchSubmit () { // 搜索按钮 点击提交事件
+      console.log('search')
+      this.searchFunc()
+    },
+    searchFunc () {
+      if (this.searchQuery) {
+        console.log(1)
+        this.$router.push({name: 'hotelMdd', params: this.searchQuery})
+      }
     }
   }
 }
@@ -188,11 +214,16 @@ export default {
   margin 40px 0 70px 0
   position relative
   z-index 9
+  &:after
+    content ''
+    clear both
+    height 0
+    display block
+    overflow hidden
   .hotel-input
     width 352px
     height 45px
     float left
-    padding-right 20px
     margin-right 10px
   .not-cont
     position absolute
@@ -297,4 +328,22 @@ export default {
     float left
     height 47px
     margin-right 10px
+  .btn-search
+    width 46px
+    height 46px
+    line-height 46px
+    background-color $theme_color
+    float left
+    border-radius 5px
+    cursor pointer
+    text-align center
+    &:hover
+      background-color #ff8a00
+    i
+      display inline-block
+      width 24px
+      height 24px
+      vertical-align middle
+      background url(../../assets/images/header-sprites3.png) no-repeat
+      background-position 0 -165px
 </style>

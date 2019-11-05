@@ -54,7 +54,7 @@ export default {
       bindBulrHolder: null, // 失焦事件
       adultsList: Array.from({length: 7}, (v, i) => i + 1), // 默认成人option列表
       kidsList: Array.from({length: 4}, (v, i) => i), // 默认小孩option列表
-      adultNum: 0, // 成人选择人数
+      adultNum: 1, // 成人选择人数
       kidNum: 0 // 小孩选择人数
     }
   },
