@@ -4,7 +4,7 @@
       <div class="r-title">
         <h2>主题住宿</h2>
       </div>
-      <navArea v-if="zsList.length > 0" :navAreaList="zsList">
+      <navArea v-if="zsList.length > 0" acitveType="click" :navAreaList="zsList">
         <template v-slot:navAreaBody="{scopeBody}">
           <div v-if="scopeBody">
             <ul>
