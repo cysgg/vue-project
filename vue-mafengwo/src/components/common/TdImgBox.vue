@@ -28,7 +28,8 @@ export default {
       mouseXY: {
         mouseX: 0,
         mouseY: 0
-      }
+      },
+      mouseIn: false
     }
   },
   watch: {
@@ -50,19 +51,26 @@ export default {
     },
     mmHolder (e) {
       this.mouseXY = { mouseX: e.layerX, mouseY: e.layerY }
+      if (!this.mouseIn) {
+        this.mouseIn = true
+      }
     },
     mlHolder () {
+      this.mouseIn = false
       this.leaveHolder()
-      this.$refs.item.style.transform = 'rotateX(0deg) rotateY(0deg)'
-      this.$refs.shadow.style.backgroundImage = 'linear-gradient(45deg, rgba(0, 0, 0, 0.4), transparent 40%)'
     },
     leaveHolder () {
-      speedC(
+      speedC.call(
+        this,
         {x: this.mouseXY.mouseX, y: this.mouseXY.mouseY},
         {x: 120, y: 159},
-        (x, y) => {
-          this.drawSpan3d(x, y)
-          this.drawItem3d(x, y)
+        (x, y, raf) => {
+          if (this.mouseIn) {
+            window.cancelAnimationFrame(raf)
+          } else {
+            this.drawSpan3d(x, y)
+            this.drawItem3d(x, y)
+          }
         }
       )
     }
