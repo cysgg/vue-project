@@ -22,12 +22,12 @@ const header = {
       // },{
         value: '订酒店',
         path: '/djd'
-      },{
+      // },{
       //   value: '社区',
       //   path: '/sq'
       // },{
-        value: 'APP',
-        path: '/app'
+        // value: 'APP',
+        // path: '/app'
       }]
     }
   }

@@ -17,17 +17,20 @@
       </ul>
     </div>
     <ztzs class="row"></ztzs>
+    <tjjd class="row"></tjjd>
   </div>
 </template>
 
 <script>
 import ztzs from 'components/djd/ztzs'
+import tjjd from 'components/djd/tjjd'
 import hotelSearch from 'components/djd/hotelSearch'
 export default {
   name: 'djdIndex',
   components: {
     hotelSearch,
-    ztzs
+    ztzs,
+    tjjd
   },
   data () {
     return {

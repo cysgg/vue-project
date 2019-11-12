@@ -6,9 +6,9 @@
         :key="index"
         class="forblock"
         @mouseover="addactive(index)"
+        @click="clickActive(index)"
       >
         <span :class="{'on': currIndex === index}">{{item.navbarTitle}}</span>
-        <i v-if="index !== navAreaList.length - 1" class="divide"></i>
       </div>
     </div>
     <div class="r-navbody" v-show="hasUpdataDOM">
@@ -25,6 +25,13 @@ export default {
       type: Array,
       validator (val) {
         return Object.getOwnPropertyNames(val[0]).includes('navbarTitle')
+      }
+    },
+    acitveType: {
+      type: String,
+      default: 'mouseover',
+      validator (val) {
+        return ['click', 'mouseover'].includes(val)
       }
     }
   },
@@ -51,11 +58,22 @@ export default {
   },
   methods: {
     addactive (index) {
-      if (this.currIndex === index) {
-        return
+      if (this.acitveType === 'mouseover') {
+        if (this.currIndex === index) {
+          return
+        }
+        this.currIndex = index
+        this.hasUpdataDOM = false
       }
-      this.currIndex = index
-      this.hasUpdataDOM = false
+    },
+    clickActive (index) {
+      if (this.acitveType === 'click') {
+        if (this.currIndex === index) {
+          return
+        }
+        this.currIndex = index
+        this.hasUpdataDOM = false
+      }
     }
   }
 }
@@ -63,31 +81,27 @@ export default {
 
 <style scoped lang="stylus">
 .r-navbar
-  margin -10px 0 30px
+  margin -10px 0 20px
   text-align center
   font-size 18px
   color #eee
   line-height 22px
+  display flex
+  border-bottom 1px solid #e4e4e4
   .forblock
+    flex 1
     display inline
     font-size 0
+    cursor pointer
     span
       color #333
       display inline-block
-      margin 0 25px
+      width 100%
       vertical-align top
+      text-align center
       font-size 18px
     .on
       padding-bottom 12px
       color $theme_color
       border-bottom 3px solid #ff9d00
-    .divide
-      display inline-block
-      margin 3px 0 0 0
-      width 1px
-      height 15px
-      background-color #eee
-      overflow hidden
-      line-height 100
-      vertical-align top
 </style>
