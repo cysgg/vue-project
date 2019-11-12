@@ -41,6 +41,8 @@ export default new Router({
         {path: 'djdIndex', name: 'djdIndex', component: __loadChildCom__('djd', 'djdIndex'), meta: {keepAlive: false, headerOpacity: false}},
         {path: 'hotelMdd', name: 'hotelMdd', component: __loadChildCom__('djd', 'hotelMdd'), meta: {keepAlive: false, headerOpacity: false}}
       ]
-    }
+    },
+
+    {path: '/travels', name: 'travels', component: __loadView__('travels'), meta: {keepAlive: false, headerOpacity: true}}
   ]
 })

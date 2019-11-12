@@ -59,6 +59,12 @@ body
   font-size 0
   line-height 0
   overflow hidden
+.clearfix:after
+  content ''
+  display block
+  clear both
+  overflow hidden
+  height 0
 .row
   padding 40px 0
   width 1000px

@@ -28,9 +28,18 @@ function formatEnMonth (month) {
   return dateMonth[formatMonth]
 }
 
+function getNumFixed (num, divisorNum = 10000, fixedNum = 1) {
+  let num1 = parseFloat(num, 10)
+  if (Number.isNaN(num1)) {
+    return num
+  }
+  return (num1 / divisorNum).toFixed(fixedNum)
+}
+
 export {
   formatDay,
   formatMonAndYear,
   formatMonthAndDay,
-  formatEnMonth
+  formatEnMonth,
+  getNumFixed
 }

@@ -4,6 +4,7 @@ import mdd from './mdd'
 import lygl from './lygl'
 import llzm from './llzm'
 import djd from './djd'
+import travels from './travels'
 
 export default {
   ...header,
@@ -11,5 +12,6 @@ export default {
   ...mdd,
   ...lygl,
   ...llzm,
-  ...djd
+  ...djd,
+  ...travels
 }
