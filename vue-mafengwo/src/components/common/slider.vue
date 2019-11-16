@@ -36,7 +36,8 @@ export default {
   data () {
     return {
       currIndex: 0,
-      ivTimer: null
+      ivTimer: null,
+      visibilitychangeHandlerBind: null
     }
   },
   computed: {
@@ -46,6 +47,8 @@ export default {
   },
   mounted () {
     this.ivTimer = setInterval(this.loopItem, 10000)
+    this.visibilitychangeHandlerBind = this.visibilitychangeHandler.bind(this)
+    document.addEventListener('visibilitychange', this.visibilitychangeHandlerBind)
   },
   methods: {
     selectItem (val) {
@@ -58,10 +61,18 @@ export default {
     },
     loopItem () {
       this.selectItem((this.currIndex + 1) % this.showInfoList.length)
+    },
+    visibilitychangeHandler () {
+      if (document.visibilityState === 'hidden') { // 切离该页面时执行
+        clearInterval(this.ivTimer)
+      } else if (document.visibilityState === 'visible') { // 切换到该页面时执行
+        this.ivTimer = setInterval(this.loopItem, 10000)
+      }
     }
   },
   beforeDestroy () {
     clearInterval(this.ivTimer)
+    document.removeEventListener('visibilitychange', this.visibilitychangeHandlerBind)
   }
 }
 </script>
@@ -84,4 +95,11 @@ export default {
   right 26px
   bottom 24px
   width 140px
+.sideslide-ol
+  position absolute
+  left 0
+  bottom 0
+  width 100%
+  overflow hidden
+  height 4px
 </style>

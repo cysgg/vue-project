@@ -8,7 +8,7 @@
         :key="item.id"
       >
       <!-- 具名插槽 itemContetn 传出的值为名为travelnote -->
-        <slot name="itemContent" :travelnote="item"></slot>
+        <slot name="itemContent" :paginationItem="item"></slot>
       </div>
     </transition-group>
     <div class="pagination">

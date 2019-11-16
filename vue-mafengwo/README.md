@@ -50,7 +50,13 @@
     特价酒店数据
   3. /api/djd/inputPop/inputPop_info_list
     搜索弹出框数据
-
+- travels 游记详情页
+  1. /api/travels/travelContent/travelContent_info_list
+    游记内容数据
+  2. /api/travels/travelInfo/travelInfo_info
+    游记信息数据
+  3. /api/travels/travelComment/travelComment_info_list
+    游记评论数据
 
 ## 组件
 - common 公共组件

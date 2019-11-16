@@ -3,45 +3,45 @@
     <!-- 公共组件 传入每个item的html结构放入插槽 -->
     <paginationContent @fetchList="gettravelnotes" :paginationList="travelnotes" :page.sync="apiQuery.page" :limit.sync="apiQuery.limit" :total="total">
       <!-- 传入的每一个item模板 具名插槽 itemContent 插槽的值为travelnote -->
-      <template v-slot:itemContent="{travelnote}">
+      <template v-slot:itemContent="{paginationItem}">
         <div class="tn-item">
           <div class="tn-image">
-            <img v-lazy="travelnote.image" alt="">
+            <img v-lazy="paginationItem.image" alt="">
           </div>
           <div class="tn-wrapper">
             <div class="tn-content">
               <div class="tn-title">
                 <router-link to="" tag="a">
-                  {{travelnote.title}}
+                  {{paginationItem.title}}
                 </router-link>
               </div>
               <div class="tn-text">
                 <router-link to="" tag="a">
-                  {{travelnote.context}}
+                  {{paginationItem.context}}
                 </router-link>
               </div>
             </div>
             <div class="tn-extra">
               <span class="tn-ding">
                 <i class="btn-ding"></i>
-                <em>{{travelnote.liked}}</em>
+                <em>{{paginationItem.liked}}</em>
               </span>
               <span class="tn-place">
                 <i></i>
                 <router-link to="" tag="a">
-                  {{travelnote.address}}
+                  {{paginationItem.address}}
                 </router-link>
                 ，by
               </span>
               <span class="tn-user">
                 <router-link to="" tag="a">
-                  <img v-lazy="travelnote.userImg" alt="">
-                  {{travelnote.userName}}
+                  <img v-lazy="paginationItem.userImg" alt="">
+                  {{paginationItem.userName}}
                 </router-link>
               </span>
               <span class="tn-nums">
                 <i></i>
-                {{travelnote.watchSum}}/{{travelnote.watchingNum}}
+                {{paginationItem.watchSum}}/{{paginationItem.watchingNum}}
               </span>
             </div>
           </div>

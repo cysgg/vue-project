@@ -6,5 +6,8 @@ export default {
   },
   getTravelInfo (params) {
     return fetchGet('/api/travels/travelInfo/travelInfo_info', params)
+  },
+  getTravelCommentInfo (params) {
+    return fetchGet('/api/travels/travelComment/travelComment_info_list', params)
   }
 }
