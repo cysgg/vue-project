@@ -4,7 +4,7 @@
     <paginationContent @fetchList="gettravelnotes" :paginationList="travelnotes" :page.sync="apiQuery.page" :limit.sync="apiQuery.limit" :total="total">
       <!-- 传入的每一个item模板 具名插槽 itemContent 插槽的值为travelnote -->
       <template v-slot:itemContent="{paginationItem}">
-        <div class="tn-item">
+        <div class="tn-item" @click="toTravel(paginationItem)">
           <div class="tn-image">
             <img v-lazy="paginationItem.image" alt="">
           </div>
@@ -117,6 +117,9 @@ export default {
           })
         }
       })
+    },
+    toTravel (item) {
+      this.$router.push({name: 'travels', params: item})
     }
   },
   created () {

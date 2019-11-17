@@ -5,6 +5,7 @@
         v-for="(item, index) in picList"
         :key="index"
         :class="index === currIndex ? 'show' : 'hide'"
+        @click="toTravel(item)"
       >
         <router-link tag="a" class="show-pic" to="">
           <img v-lazy="item.imgUrl" alt="">
@@ -64,6 +65,9 @@ export default {
     },
     sliderTimer () {
       this.currIndex = (this.currIndex + 1) % this.picList.length
+    },
+    toTravel (item) {
+      this.$router.push({name: 'travels', params: item})
     }
   },
   filters: {

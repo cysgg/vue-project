@@ -5,6 +5,7 @@
         v-for="(day, index) in daysList"
         :key="index"
         :class="day && day.bgimg ? '_j_hover' : 'after'"
+        @click.stop="toTravel(day)"
       >
         <span v-if="!day || !day.bgimg"></span>
         <em v-if="!day"></em>
@@ -66,6 +67,9 @@ export default {
       } else {
         return list
       }
+    },
+    toTravel (item) {
+      this.$router.push({name: 'travels', params: item})
     }
   }
 }

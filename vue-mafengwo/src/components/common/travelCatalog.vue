@@ -33,7 +33,7 @@ export default {
   methods: {
     scrollto (height) {
       let clientH = Math.floor(document.documentElement.clientWidth / 2.7)
-      scrollIt(height + clientH + 250)
+      scrollIt(height + clientH + 190)
     }
   }
 }

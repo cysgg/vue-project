@@ -1,13 +1,24 @@
-export function getUrlParam (url) {
-  url = decodeURIComponent(url)
-  if (url.indexOf('?') < 0) {
-    return {}
+import url from 'url'
+import queryString from 'querystring'
+
+export function getUrlParam (curl) {
+  return parseString(queryString.parse(url.parse(curl).query))
+}
+
+function parseString (obj) {
+  console.log('====', obj)
+  if (typeof obj === 'object') {
+    let objKeys = Object.getOwnPropertyNames(obj)
+    if (objKeys.length < 0) {
+      return obj
+    }
+    return objKeys.reduce((p, v) => {
+      p[v] = JSON.parse(obj[v])
+      return p
+    }, {})
+  } else {
+    return obj
   }
-  return url.split('?')[1].split('&').reduce((pre, next) => {
-    let a = next.split('=')
-    pre[a[0]] = JSON.parse(a[1])
-    return pre
-  }, {})
 }
 
 export function selectPLList (list, page, limit) {

@@ -4,6 +4,8 @@
     <topFocus></topFocus>
     <!-- 头部作者信息组件 -->
     <titleBar></titleBar>
+    <!-- 滚动时的头部定位组件 -->
+    <fixedBar ref="fixedBar"></fixedBar>
     <div class="view clearfix">
       <div class="view_con">
         <!-- 文章主体 -->
@@ -25,6 +27,7 @@ import titleBar from 'components/travels/titleBar'
 import contentWrap from 'components/travels/contentWrap'
 import sideNav from 'components/travels/sideNav'
 import travelCmt from 'components/travels/travelCmt'
+import fixedBar from 'components/travels/fixedBar'
 import api from '@/api/index'
 export default {
   name: 'travels',
@@ -33,7 +36,8 @@ export default {
     titleBar,
     contentWrap,
     sideNav,
-    travelCmt
+    travelCmt,
+    fixedBar
   },
   provide () {
     return {
@@ -52,6 +56,7 @@ export default {
       let clientHeight = document.documentElement.clientHeight
       let scrollHeight = document.documentElement.scrollHeight
       this.$refs.contentWrap.judgeScroll(scrollTop, clientHeight, scrollHeight)
+      this.$refs.fixedBar.listenScroll(scrollTop, clientHeight, scrollHeight)
     }
   },
   created () {

@@ -14,6 +14,13 @@ Vue.use(vueLazyLoad, {
 
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  if (!to.meta.keepAlive) {
+    document.documentElement.scrollTop = 0
+  }
+  next()
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

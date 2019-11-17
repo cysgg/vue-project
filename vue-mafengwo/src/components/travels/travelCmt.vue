@@ -1,7 +1,7 @@
 <template>
   <div class="cmt-wrap" ref="cmtWrap">
     <paginationContent
-       @fetchList="getApiData"
+       @fetchList="fetchPageApi"
        :paginationList="travelCmtList"
        :page.sync="cmtQuery.page"
        :limit.sync="cmtQuery.limit"
@@ -71,16 +71,23 @@ export default {
     }
   },
   methods: {
-    getApiData () {
-      api.getTravelCommentInfo({
-        travelInfo: this.$route.params,
-        query: this.cmtQuery
-      }).then(res => {
-        console.log(res)
-        this.travelCmtList = res.travelComment
-        this.total = res.total
+    fetchPageApi () {
+      this.getApiData().then(() => {
         this.$nextTick(() => {
           scrollIt(this.getElementToPageTop(this.$refs.cmtWrap) - 20)
+        })
+      })
+    },
+    getApiData () {
+      return new Promise((resolve, reject) => {
+        api.getTravelCommentInfo({
+          travelInfo: this.$route.params,
+          query: this.cmtQuery
+        }).then(res => {
+          console.log(res)
+          this.travelCmtList = res.travelComment
+          this.total = res.total
+          return resolve(res)
         })
       })
     },
