@@ -43,6 +43,9 @@ export default new Router({
       ]
     },
 
-    {path: '/travels', name: 'travels', component: __loadView__('travels'), meta: {keepAlive: false, headerOpacity: true}}
+    {path: '/travels', name: 'travels', component: __loadView__('travels'), meta: {keepAlive: false, headerOpacity: true}},
+
+    {path: '/strategy', name: 'strategy', component: __loadView__('strategy'), meta: {keepAlive: false, headerOpacity: false}}
+
   ]
 })

@@ -5,6 +5,7 @@ import lygl from './lygl'
 import llzm from './llzm'
 import djd from './djd'
 import travels from './travels'
+import strategy from './strategy'
 
 export default {
   ...header,
@@ -13,5 +14,6 @@ export default {
   ...lygl,
   ...llzm,
   ...djd,
-  ...travels
+  ...travels,
+  ...strategy
 }

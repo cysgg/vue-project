@@ -57,7 +57,9 @@
     游记信息数据
   3. /api/travels/travelComment/travelComment_info_list
     游记评论数据
-
+- strategy 攻略详情页
+  1. /api/strategy/strategyInfo/strategyInfo_info
+    攻略详情数据
 ## 组件
 - common 公共组件
   1. asidebox

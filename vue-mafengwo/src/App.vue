@@ -1,5 +1,6 @@
 <template>
-  <div id="app" :class="{'body-mt': !$route.meta.headerOpacity}">
+  <div id="app">
+    <div :class="{'body-mt': !$route.meta.headerOpacity}"></div>
     <!-- 头部 -->
     <tabBar></tabBar>
     <keep-alive>
@@ -33,7 +34,7 @@ body
   color #666
   font-family Arial,"Lucida Grande","Microsoft Yahei","Hiragino Sans GB","Hiragino Sans GB W3",SimSun,"PingFang SC",STHeiti
 .body-mt
-  margin-top 58px
+  height 58px
   overflow hidden
 .slideRight-enter
   transform translateX(100%)

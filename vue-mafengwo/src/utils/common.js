@@ -6,7 +6,6 @@ export function getUrlParam (curl) {
 }
 
 function parseString (obj) {
-  console.log('====', obj)
   if (typeof obj === 'object') {
     let objKeys = Object.getOwnPropertyNames(obj)
     if (objKeys.length < 0) {
