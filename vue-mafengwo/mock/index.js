@@ -7,6 +7,7 @@ import llzm from './llzm/index'
 import djd from './djd/index'
 import travels from './travels/index'
 import strategy from './strategy/index'
+import login from './login/index'
 
 // 延时200-600毫秒请求到数据
 Mock.setup({
@@ -21,7 +22,8 @@ const mocks = [
   ...llzm,
   ...djd,
   ...travels,
-  ...strategy
+  ...strategy,
+  ...login
 ]
 
 mocks.forEach(route => {

@@ -2,13 +2,13 @@
   <div id="app">
     <div :class="{'body-mt': !$route.meta.headerOpacity}"></div>
     <!-- 头部 -->
-    <tabBar></tabBar>
+    <tabBar v-show="$route.meta.needHeaderOrFooter"></tabBar>
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive"/>
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive"/>
     <!-- 底部 -->
-    <footerBar></footerBar>
+    <footerBar v-show="$route.meta.needHeaderOrFooter"></footerBar>
   </div>
 </template>
 

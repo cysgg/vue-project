@@ -17,35 +17,39 @@ export default new Router({
   routes: [
     {path: '/', redirect: '/home'},
 
-    {path: '/home', name: 'home', component: __loadView__('home'), meta: {keepAlive: false, headerOpacity: true}},
+    {path: '/home', name: 'home', component: __loadView__('home'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: true}},
 
-    {path: '/mdd', name: 'mdd', component: __loadView__('mdd'), meta: {keepAlive: false, headerOpacity: true}},
+    {path: '/mdd', name: 'mdd', component: __loadView__('mdd'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: true}},
 
     {
       path: '/gonglve',
       component: __loadView__('lygl'),
       children: [
         {path: '', name: 'gonglve', redirect: 'lyglIndex'},
-        {path: 'lyglIndex', name: 'lyglIndex', component: __loadChildCom__('lygl', 'lyglIndex'), meta: {keepAlive: false, headerOpacity: false}},
-        {path: 'lyglItem/:name', name: 'lyglItem', component: __loadChildCom__('lygl', 'lyglItem'), meta: {keepAlive: false, headerOpacity: false}}
+        {path: 'lyglIndex', name: 'lyglIndex', component: __loadChildCom__('lygl', 'lyglIndex'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: false}},
+        {path: 'lyglItem/:name', name: 'lyglItem', component: __loadChildCom__('lygl', 'lyglItem'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: false}}
       ]
     },
 
-    {path: '/llzm', name: 'llzm', component: __loadView__('llzm'), meta: {keepAlive: false, headerOpacity: true}},
+    {path: '/llzm', name: 'llzm', component: __loadView__('llzm'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: true}},
 
     {
       path: '/djd',
       component: __loadView__('djd'),
       children: [
         {path: '', name: 'djd', redirect: 'djdIndex'},
-        {path: 'djdIndex', name: 'djdIndex', component: __loadChildCom__('djd', 'djdIndex'), meta: {keepAlive: false, headerOpacity: false}},
-        {path: 'hotelMdd', name: 'hotelMdd', component: __loadChildCom__('djd', 'hotelMdd'), meta: {keepAlive: false, headerOpacity: false}}
+        {path: 'djdIndex', name: 'djdIndex', component: __loadChildCom__('djd', 'djdIndex'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: false}},
+        {path: 'hotelMdd', name: 'hotelMdd', component: __loadChildCom__('djd', 'hotelMdd'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: false}}
       ]
     },
 
-    {path: '/travels', name: 'travels', component: __loadView__('travels'), meta: {keepAlive: false, headerOpacity: true}},
+    {path: '/travels', name: 'travels', component: __loadView__('travels'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: true}},
 
-    {path: '/strategy', name: 'strategy', component: __loadView__('strategy'), meta: {keepAlive: false, headerOpacity: false}}
+    {path: '/strategy', name: 'strategy', component: __loadView__('strategy'), meta: {needHeaderOrFooter: true, keepAlive: false, headerOpacity: false}},
+
+    {path: '/login', name: 'login', component: __loadView__('loginAndRegister'), meta: {needHeaderOrFooter: false, keepAlive: false, headerOpacity: true}},
+
+    {path: '/register', name: 'register', component: __loadView__('loginAndRegister'), meta: {needHeaderOrFooter: false, keepAlive: false, headerOpacity: true}}
 
   ]
 })

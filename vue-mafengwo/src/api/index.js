@@ -6,6 +6,7 @@ import llzm from './llzm'
 import djd from './djd'
 import travels from './travels'
 import strategy from './strategy'
+import login from './login'
 
 export default {
   ...header,
@@ -15,5 +16,6 @@ export default {
   ...llzm,
   ...djd,
   ...travels,
-  ...strategy
+  ...strategy,
+  ...login
 }
