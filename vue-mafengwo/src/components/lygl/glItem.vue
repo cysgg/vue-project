@@ -1,6 +1,6 @@
 <template>
   <div class="gl_item">
-    <router-link to="">
+    <router-link :to="{name: 'strategy', params: {}}">
       <img :src="imgUrl" :alt="itemName">
     </router-link>
     <div class="update_time">更新时间：{{update_time}}</div>

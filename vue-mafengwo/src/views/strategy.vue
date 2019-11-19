@@ -5,10 +5,12 @@
       <topTitle></topTitle>
       <!-- 攻略文章详情 -->
       <strategyContent></strategyContent>
+      <!-- 评论 -->
+      <strategyCmt></strategyCmt>
     </div>
     <div class="sideR">
       <!-- 右边导航栏 -->
-      <strategyNav></strategyNav>
+      <strategyNav ref="strategyNav"></strategyNav>
     </div>
     <div class="relate"></div>
   </div>
@@ -18,17 +20,20 @@
 import topTitle from 'components/strategy/topTitle'
 import strategyContent from 'components/strategy/strategyContent'
 import strategyNav from 'components/strategy/strategyNav'
+import strategyCmt from 'components/strategy/strategyCmt'
 import api from '@/api/index'
 export default {
   name: 'strategy',
   components: {
     topTitle,
     strategyContent,
-    strategyNav
+    strategyNav,
+    strategyCmt
   },
   data () {
     return {
-      strategyInfo: {}
+      strategyInfo: {},
+      scrollHanderBind: null
     }
   },
   provide () {
@@ -43,6 +48,21 @@ export default {
         this.$set(this.strategyInfo, key, res.strategyInfo[key])
       }
     })
+  },
+  methods: {
+    scrollHander () {
+      let scrollTop = document.documentElement.scrollTop
+      let clientHeight = document.documentElement.clientHeight
+      let scrollHeight = document.documentElement.scrollHeight
+      this.$refs.strategyNav.scrollListen(scrollTop, clientHeight, scrollHeight)
+    }
+  },
+  mounted () {
+    this.scrollHanderBind = this.scrollHander.bind(this)
+    window.addEventListener('scroll', this.scrollHanderBind)
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.scrollHanderBind)
   }
 }
 </script>

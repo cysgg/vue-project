@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'SvgIcon',
+  name: 'circleload',
   props: {
     svgWidth: {
       type: Number,

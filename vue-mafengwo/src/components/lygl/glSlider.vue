@@ -4,7 +4,7 @@
       <template v-slot:showArea="{currItem}">
         <transition  tag="div" :name="slideDec">
           <div :key="currItem" class="show-wrap">
-            <router-link to="" tag="a">
+            <router-link :to="{name: 'strategy', params: currItem}" tag="a">
               <img v-lazy="currItem" alt="">
             </router-link>
           </div>

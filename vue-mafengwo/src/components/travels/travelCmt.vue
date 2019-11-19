@@ -7,41 +7,41 @@
        :limit.sync="cmtQuery.limit"
        :total="total"
     >
-    <template v-slot:itemContent="{paginationItem}">
-      <div class="mfw-cmt">
-        <div class="mcmt-info">
-          <div class="mcmt-photo">
-            <img v-lazy="paginationItem.userImg" alt="">
-          </div>
-          <div class="mcmt-user">
-            <span class="name">{{paginationItem.userNameAndAddr}}</span>
-            <span class="level">{{paginationItem.userLevel}}</span>
-          </div>
-          <div class="mcmt-other">
-            <span class="floor">{{paginationItem.id}}F</span>
-          </div>
-        </div>
-        <div class="mcmt-con-wrap clearfix">
-          <div class="mcmt-con">
-            <div class="mcmt-quote" v-if="paginationItem.quote">
-              <p v-if="travelNoteInfo.userInfo">引用{{travelNoteInfo.userInfo.name}}的图片</p>
-              <p>
-                <img v-lazy="paginationItem.quote" alt="">
-              </p>
+      <template v-slot:itemContent="{paginationItem}">
+        <div class="mfw-cmt">
+          <div class="mcmt-info">
+            <div class="mcmt-photo">
+              <img v-lazy="paginationItem.userImg" alt="">
             </div>
-            <div class="mcmt-word">
-              <p>{{paginationItem.content}}</p>
+            <div class="mcmt-user">
+              <span class="name">{{paginationItem.userNameAndAddr}}</span>
+              <span class="level">{{paginationItem.userLevel}}</span>
+            </div>
+            <div class="mcmt-other">
+              <span class="floor">{{paginationItem.id}}F</span>
             </div>
           </div>
-          <div class="mcmt-tag">
-            <img v-if="paginationItem.signComment" v-lazy="paginationItem.signComment" alt="">
+          <div class="mcmt-con-wrap clearfix">
+            <div class="mcmt-con">
+              <div class="mcmt-quote" v-if="paginationItem.quote">
+                <p v-if="travelNoteInfo.userInfo">引用{{travelNoteInfo.userInfo.name}}的图片</p>
+                <p>
+                  <img v-lazy="paginationItem.quote" alt="">
+                </p>
+              </div>
+              <div class="mcmt-word">
+                <p>{{paginationItem.content}}</p>
+              </div>
+            </div>
+            <div class="mcmt-tag">
+              <img v-if="paginationItem.signComment" v-lazy="paginationItem.signComment" alt="">
+            </div>
+          </div>
+          <div class="mcmt-bot">
+            <div class="time">{{paginationItem.time}}</div>
           </div>
         </div>
-        <div class="mcmt-bot">
-          <div class="time">{{paginationItem.time}}</div>
-        </div>
-      </div>
-    </template>
+      </template>
     </paginationContent>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <div class="bar-main">
       <div class="bread-nav">
         <router-link class="circle_bar" :to="{name: 'home'}">
-          <svgIcon
+          <circleload
             :svgWidth="svgWidth"
             :svgHeight="svgHeight"
             :svgPosition="svgPosition"
@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import svgIcon from 'components/common/svgIcon'
+import circleload from 'components/common/circleload'
 import loginArea from 'components/header/loginArea'
 export default {
   name: 'topFixedBar',
   components: {
     loginArea,
-    svgIcon
+    circleload
   },
   data () {
     return {

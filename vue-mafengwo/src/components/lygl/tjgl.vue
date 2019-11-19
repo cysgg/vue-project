@@ -8,7 +8,7 @@
       :key="index"
     >
       <div class="feed-item">
-        <router-link to="" tag="a">
+        <router-link :to="{name: 'strategy', params: item}" tag="a">
           <div class="bar">
             <span class="stat">
               <span class="num">

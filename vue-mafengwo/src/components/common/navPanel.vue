@@ -8,7 +8,7 @@
         >
         <em class="rank-num">{{index + 1}}</em>
         <strong><router-link to="" tag="a">{{item.item_mdd}}</router-link></strong>
-        <router-link to="" tag="a">{{item.item_dec}}</router-link>
+        <router-link :to="{name: 'strategy', params: item}" tag="a">{{item.item_dec}}</router-link>
       </li>
     </ol>
   </div>

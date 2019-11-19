@@ -12,7 +12,11 @@ function parseString (obj) {
       return obj
     }
     return objKeys.reduce((p, v) => {
-      p[v] = JSON.parse(obj[v])
+      try {
+        p[v] = JSON.parse(obj[v])
+      } catch (e) {
+        p[v] = obj[v]
+      }
       return p
     }, {})
   } else {
