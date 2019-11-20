@@ -5,7 +5,6 @@ export default {
     return fetchGet('/api/home/slider/slider_info_list')
   },
   getTravelnotesHotInfo (params) {
-    console.log(params, '+++++++')
     return fetchGet('/api/home/travelnotes/travelnotesHot_info_list', params)
   },
   getTravelnotesNewInfo (params) {

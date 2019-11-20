@@ -2,12 +2,10 @@ import url from 'url'
 import queryString from 'querystring'
 
 export function getUrlParam (curl) {
-  console.log(curl, '__________')
   return parseString(queryString.parse(url.parse(curl).query))
 }
 
 function parseString (obj) {
-  console.log(obj, '------------')
   if (typeof obj === 'object') {
     let objKeys = Object.getOwnPropertyNames(obj)
     if (objKeys.length < 0) {

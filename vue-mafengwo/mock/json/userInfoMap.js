@@ -23,7 +23,7 @@ const userInfoMap = {
     name: 'cys',
     password: '666',
     userInfo: {
-      userName: 'abc',
+      userName: 'cys',
       level: 19,
       money: 27,
       userImg: 'https://n1-q.mafengwo.net/s15/M00/E4/E8/CoUBGV27veKAY-JIABJDcmpuTJY02.jpeg?imageMogr2%2Fthumbnail%2F%2116x16r%2Fgravity%2FCenter%2Fcrop%2F%2116x16%2Fquality%2F90'

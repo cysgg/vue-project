@@ -6,9 +6,7 @@ const travelnotesHot = {
   url: /\/api\/home\/travelnotes\/travelnotesHot_info_list/,
   type: 'get',
   response: options => {
-    console.log(options, '+++++++++++')
     let {page, limit} = getUrlParam(options.url)
-    console.log(page, limit, '==================')
     let travelnotesMock = selectPLList(travelnotesList, page, limit)
     let total = travelnotesList.length
     return Mock.mock({
