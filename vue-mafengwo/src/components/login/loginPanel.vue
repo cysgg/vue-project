@@ -3,11 +3,33 @@
     <div class="sign-box">
       <div class="inner clearfix">
         <div class="inner_v2_left">
-          <form method="post">
-            <formField tip="你的邮箱/手机号"></formField>
-            <formField tip="你的密码" type="password"></formField>
+          <div v-if="isFiald" class="alert">{{fialdMsg}}</div>
+          <form key="loginForm" novalidate="true" v-if="islogin" method="post" autocomplete="off">
+            <formField
+              @checkVal="validateItem"
+              v-model="loginQuery.name"
+              tip="你的邮箱/手机号"
+              iname="name">
+            </formField>
+            <formField
+              @checkVal="validateItem"
+              v-model="loginQuery.password"
+              tip="你的密码" type="password"
+              iname="password">
+            </formField>
             <div class="submit-btn">
-              <button>登 录</button>
+              <button :disabled="fetchIng" @click.prevent="submitForm('login')">登 录</button>
+            </div>
+          </form>
+          <form key="registerForm" novalidate="true" @submit.prevent v-else method="post">
+            <formField
+              @checkVal="validateItem"
+              v-model="registerQuery.phoneNum"
+              tip="你的手机号码"
+              iname="phoneNum">
+            </formField>
+            <div class="submit-btn">
+              <button @click.prevent="submitForm('register')">立即注册</button>
             </div>
           </form>
           <div class="connect">
@@ -27,13 +49,14 @@
       </div>
       <div class="bottom-link">
         {{tip.sp}}
-        <span @click="islogin = !islogin">{{tip.link}}</span>
+        <span @click="chTypeForm">{{tip.link}}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import api from '@/api/index'
 import formField from 'components/login/formField'
 export default {
   name: 'loginPanel',
@@ -42,6 +65,9 @@ export default {
   },
   data () {
     return {
+      fetchIng: false,
+      fialdMsg: '',
+      isFiald: false,
       islogin: true,
       mfwappImg: 'https://images.mafengwo.net/mobile/images/omc/login-omc/code.jpg',
       tips: [{
@@ -50,8 +76,140 @@ export default {
       }, {
         sp: '已经注册?',
         link: '马上登录'
-      }]
+      }],
+      loginQuery: {
+        name: '',
+        password: ''
+      },
+      registerQuery: {
+        phoneNum: ''
+      },
+      rules: {
+        name: {
+          required: true,
+          maxlength: 20
+        },
+        password: {
+          required: true,
+          maxlength: 20
+        },
+        phoneNum: {
+          required: true,
+          maxlength: 20
+        }
+      },
+      messages: {
+        name: {
+          required: '*必填',
+          maxlength: '*最多20个字符'
+        },
+        password: {
+          required: '*必填',
+          maxlength: '*最多20个字符'
+        },
+        phoneNum: {
+          required: '*必填',
+          maxlength: '*最多20个字符'
+        }
+      },
+      errMsg: {
+        name: '',
+        password: '',
+        phoneNum: ''
+      }
     }
+  },
+  provide () {
+    return {
+      errMsg: this.errMsg
+    }
+  },
+  methods: {
+    chTypeForm (val) {
+      this.fialdMsg = ''
+      this.isFiald = false
+      if (typeof val === 'boolean') {
+        this.islogin = val
+      } else {
+        this.islogin = !this.islogin
+      }
+    },
+    loginUp () {
+      this.fetchIng = true
+      let query = this.islogin ? this.loginQuery : this.registerQuery
+      api.postLoginInfo(query).then(res => {
+        console.log(res)
+        if (res.logined) {
+          this.fialdMsg = ''
+          this.isFiald = false
+          this.$store.dispatch('login/getUserInfo', res.userInfo)
+          this.$store.dispatch('login/getLoginToken', res.token)
+          this.$router.push({name: 'home'})
+        } else {
+          this.fialdMsg = res.msg
+          this.isFiald = true
+        }
+        this.fetchIng = false
+      })
+    },
+    submitForm (formName) {
+      console.log(formName)
+      let formQuery = this.loginQuery
+      if (formName === 'register') {
+        formQuery = this.registerQuery
+      }
+      if (this.validate(formQuery)) {
+        console.log('验证成功')
+        this.loginUp()
+      }
+    },
+    errMsgCheck (k, v, t) { // 字段名， 出错类型， 该类型是否出错
+      if (!v) {
+        this.errMsg[k] = this.messages[k][t]
+      } else {
+        this.errMsg[k] = ''
+      }
+    },
+    validateItem (key) {
+      let itemVal = key in this.loginQuery ? this.loginQuery : this.registerQuery
+      this.validateRules(itemVal[key], key)
+    },
+    validateRules (data, key) {
+      let val = true
+      let errType
+      for (let keyRule of Object.getOwnPropertyNames(this.rules[key])) {
+        if (!this.validateRule(data, keyRule, this.rules[key][keyRule])) {
+          val = false
+          errType = keyRule
+          break
+        }
+      }
+      this.errMsgCheck(key, val, errType)
+      return val
+    },
+    validate (data, callback = function () {}) {
+      let status = true
+      for (let key in data) {
+        if (!this.validateRules(data[key], key)) {
+          status = false
+        }
+      }
+      return status
+    },
+    validateRule (val, type, typeRule) {
+      if (type === 'required') {
+        return typeRule ? val !== '' : true
+      } else if (type === 'maxlength') {
+        return val.length < parseInt(typeRule, 10)
+      } else if (type === 'maxlength') {
+        return val.length < parseInt(typeRule, 10)
+      } else {
+        return true
+      }
+    }
+  },
+  created () {
+    this.chTypeForm(this.$route.name === 'login')
   },
   computed: {
     tip () {
@@ -82,6 +240,16 @@ export default {
       .inner_v2_left
         float left
         width 370px
+        .alert
+          width 300px
+          margin 0 auto
+          color #a94442
+          background-color #f2dede
+          border-color #ebccd1
+          padding 6px 10px
+          border 1px solid transparent
+          border-radius 4px
+          text-align left
         .submit-btn
           width 320px
           margin 24px auto 0
@@ -90,6 +258,7 @@ export default {
             width 320px
             height 42px
             border 0
+            outline none
             background-color #ffa800
             border-radius 5px
             text-align center

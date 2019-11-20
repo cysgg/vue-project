@@ -66,12 +66,14 @@ export default {
 .bg
   background-position 50% 50%
   background-size cover
+  background-repeat no-repeat
   bottom 0
   right 0
   position fixed
   overflow hidden
   left 0
   top 0
+  background-color #333
   &:before
     background url(/images/signup/full_page_vignette.png) 0 0 rgba(0,0,0,0.2)
     background-size 100%
