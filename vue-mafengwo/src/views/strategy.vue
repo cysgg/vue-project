@@ -10,7 +10,7 @@
     </div>
     <div class="sideR">
       <!-- 右边导航栏 -->
-      <strategyNav ref="strategyNav"></strategyNav>
+      <strategyNav @addCount="addCount" ref="strategyNav"></strategyNav>
     </div>
     <div class="relate"></div>
   </div>
@@ -55,6 +55,14 @@ export default {
       let clientHeight = document.documentElement.clientHeight
       let scrollHeight = document.documentElement.scrollHeight
       this.$refs.strategyNav.scrollListen(scrollTop, clientHeight, scrollHeight)
+    },
+    addCount (name) {
+      this.$set(this.strategyInfo.btnMap, name, this.strategyInfo.btnMap[name] + 1)
+      this.$set(this.strategyInfo.hasActive, name, true)
+      api.getStrategyAddCount({
+        strategyInfo: this.$route.params,
+        query: {name}
+      })
     }
   },
   mounted () {

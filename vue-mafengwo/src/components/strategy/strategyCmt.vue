@@ -6,11 +6,12 @@
       </div>
       <div class="fm-tare">
         <textarea v-model="cmtText"></textarea>
-        <button class="pl">评论</button>
+        <p v-if="errMsg.length > 0" class="err-msg">{{errMsg}}</p>
+        <button @click="addCmt" class="pl">评论</button>
       </div>
     </div>
     <div class="com-box">
-      <h2>评论（<span class="_comment_num"></span>）</h2>
+      <h2>评论（<span class="_comment_num">{{strategyCommentList.length}}</span>）</h2>
       <paginationContent
         @fetchList="fetchPageApi"
         :paginationList="strategyCommentList"
@@ -39,6 +40,7 @@
 import api from '@/api/index'
 import paginationContent from 'components/common/paginationContent'
 import { scrollIt } from '@/utils/scrollIt'
+import { hasUserMixin } from '@/utils/mixin'
 export default {
   name: 'strategyCmt',
   components: {
@@ -50,6 +52,7 @@ export default {
         limit: 10,
         page: 1
       },
+      errMsg: '',
       strategyCommentList: [],
       total: 0,
       cmtText: '说点什么吧...',
@@ -69,6 +72,12 @@ export default {
         })
       })
     },
+    getElementToPageTop (el) {
+      if (el.parentElement) {
+        return this.getElementToPageTop(el.parentElement) + el.offsetTop
+      }
+      return el.offsetTop
+    },
     getStrategyCommentData () {
       return new Promise((resolve, reject) => {
         api.getStrategyCommentInfo({
@@ -81,11 +90,44 @@ export default {
           return resolve(res)
         })
       })
+    },
+    judgeErrMsg () {
+      let len = this.cmtText.length
+      if (len === 0) {
+        this.errMsg = '评论不能为空'
+        return false
+      }
+      if (len > 200) {
+        this.errMsg = '评论字数不能为200个'
+        return false
+      }
+      return true
+    },
+    addCmt () {
+      this.judgeUser()
+      if (this.hasUserInfo) {
+        if (this.judgeErrMsg()) {
+          api.postAddStrategtCmt({
+            cmtInfo: {
+              userImg: this.userInfo.userImg,
+              userName: this.userInfo.userName,
+              userLevel: this.userInfo.level,
+              cmtText: this.cmtText
+            }
+          }).then(res => {
+            console.log(res)
+            this.getStrategyCommentData()
+            this.cmtText = '说点什么吧...'
+            this.errMsg = ''
+          })
+        }
+      }
     }
   },
   created () {
     this.getStrategyCommentData()
-  }
+  },
+  mixins: [hasUserMixin]
 }
 </script>
 
@@ -119,6 +161,11 @@ export default {
         font-size 14px
         color #666
         overflow auto
+      .err-msg
+        float left
+        margin 20px 0
+        color #ff3c00
+        font-size 12px
       button
         background $theme_color
         color #fff

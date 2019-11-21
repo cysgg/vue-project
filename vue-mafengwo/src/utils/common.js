@@ -49,3 +49,22 @@ export function getMonthDayList (year, month) {
   let startCount = weekCount[firstDay.getDay()]
   return new Array(startCount).fill(0).concat(monList)
 }
+
+export function getNowTimeStr (type) {
+  var today = new Date()
+  var month = today.getMonth() + 1
+  month = month < 10 ? '0' + month : month
+  var day = today.getDate() < 10 ? '0' + today.getDate() : today.getDate()
+  var hours = today.getHours() < 10 ? '0' + today.getHours() : today.getHours()
+  var mins = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()
+  var secs = today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds()
+  var time = hours + ':' + mins + ':' + secs
+  var date = today.getFullYear() + '-' + month + '-' + day
+  var dateTime = today.getFullYear() + '-' + month + '-' + day + ' ' + hours + ':' + mins + ':' + secs
+  let timeMap = {
+    time,
+    date,
+    dateTime
+  }
+  return timeMap[type]
+}

@@ -19,6 +19,20 @@ axios.interceptors.response.use((res) => {
   return Promise.reject(error)
 })
 
+// ajax请求统一增加请求头
+axios.interceptors.request.use(config => {
+  config.headers.common = {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'X-Requested-With,Content-Type',
+    'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
+    'Authentication-Token': sessionStorage.getItem('token')
+  }
+  // config.timeout = 3600*24*7;
+  config.timeout = 10000
+  return config
+})
+
 export function fetchGet (url, params) {
   return new Promise((resolve, reject) => {
     axios.get(url, {params}).then(response => {

@@ -5,6 +5,7 @@
         class="bar-sar"
         v-for="(item, name) in strategyItemInfo.btnMap"
         :key="name"
+        @click="addCount(name)"
       >
         <i :class="name"></i>
         <em>{{item}}</em>
@@ -37,6 +38,7 @@
 <script>
 import { scrollIt } from '@/utils/scrollIt'
 import lineload from 'components/common/lineload'
+import { hasUserMixin } from '@/utils/mixin'
 export default {
   name: 'strategyNav',
   components: {
@@ -61,6 +63,14 @@ export default {
     },
     scrollto (top) {
       scrollIt(top)
+    },
+    addCount (name) {
+      this.judgeUser()
+      if (this.hasUserInfo) {
+        if (!this.strategyItemInfo.hasActive[name]) {
+          this.$emit('addCount', name)
+        }
+      }
     }
   },
   watch: {
@@ -69,7 +79,8 @@ export default {
         this.svgHeight = this.$refs.sidecon.scrollHeight
       })
     }
-  }
+  },
+  mixins: [hasUserMixin]
 }
 </script>
 
@@ -100,7 +111,7 @@ export default {
           background-position -68px 0
         &.shareCount
           background-position -136px 0
-        &.likedCOunt
+        &.likedCount
           background url(../../assets/images/icon_support.png) no-repeat
           background-size 100%
       em

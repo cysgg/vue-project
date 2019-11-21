@@ -3,7 +3,7 @@
     <!-- 头部照片组件 -->
     <topFocus></topFocus>
     <!-- 头部作者信息组件 -->
-    <titleBar></titleBar>
+    <titleBar @addCount="addLikedCount"></titleBar>
     <!-- 滚动时的头部定位组件 -->
     <fixedBar ref="fixedBar"></fixedBar>
     <div class="view clearfix">
@@ -57,6 +57,13 @@ export default {
       let scrollHeight = document.documentElement.scrollHeight
       this.$refs.contentWrap.judgeScroll(scrollTop, clientHeight, scrollHeight)
       this.$refs.fixedBar.listenScroll(scrollTop, clientHeight, scrollHeight)
+    },
+    addLikedCount () {
+      this.travelInfo.likeCount++
+      this.travelInfo.hasLiked = true
+      api.getTravelAddCount(this.$route.params).then(res => {
+        console.log(res)
+      })
     }
   },
   created () {

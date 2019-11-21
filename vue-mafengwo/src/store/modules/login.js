@@ -14,15 +14,19 @@ const getters = {
 const mutations = {
   [SET_LOGIN_USER_INFO] (state, userInfo) {
     state.userInfo = userInfo
+    sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
   },
   [CLEAR_LOGIN_USER_INFO] (state) {
     state.userInfo = null
+    sessionStorage.removeItem('userInfo')
   },
   [SET_LOGIN_TOKEN] (state, token) {
     state.token = token
+    sessionStorage.setItem('token', token)
   },
   [CLEAR_LOGIN_TOLEN] (state) {
     state.token = ''
+    sessionStorage.removeItem('token')
   }
 }
 

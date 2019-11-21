@@ -1,4 +1,4 @@
-import { fetchGet } from './config'
+import { fetchGet, fetchPost } from './config'
 
 export default {
   getStrategyInfo (params) {
@@ -9,5 +9,11 @@ export default {
   },
   getStrategyCommentInfo (params) {
     return fetchGet('/api/strategy/strategyComment/strategyComment_list_info', params)
+  },
+  getStrategyAddCount (params) {
+    return fetchGet('/api/strategy/strategyAddCount/strategyAddCount', params)
+  },
+  postAddStrategtCmt (data) {
+    return fetchPost('/api/strategy/strategyComment/addStrategtCmt', data)
   }
 }

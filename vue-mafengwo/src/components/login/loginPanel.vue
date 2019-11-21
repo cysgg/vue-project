@@ -144,7 +144,7 @@ export default {
           this.isFiald = false
           this.$store.dispatch('login/getUserInfo', res.userInfo)
           this.$store.dispatch('login/getLoginToken', res.token)
-          this.$router.push({name: 'home'})
+          this.$router.back(-1)
         } else {
           this.fialdMsg = res.msg
           this.isFiald = true

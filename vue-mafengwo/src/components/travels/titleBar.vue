@@ -2,8 +2,8 @@
   <div class="title_bar clearfix">
     <div class="vt_center" v-if="travelNoteInfo.userInfo">
       <div class="ding">
-        <span class="up_act" title="顶">顶</span>
-        <div class="num">{{travelNoteInfo.likeCOunt}}</div>
+        <span @click="addCount" class="up_act" title="顶">顶</span>
+        <div class="num">{{travelNoteInfo.likeCount}}</div>
       </div>
       <div class="person">
         <div class="per_pic">
@@ -39,6 +39,7 @@
 
 <script>
 import { getNumFixed } from '@/utils/filter'
+import { hasUserMixin } from '@/utils/mixin'
 export default {
   name: 'titleBar',
   inject: {
@@ -48,7 +49,18 @@ export default {
   },
   filters: {
     getNumFixed
-  }
+  },
+  methods: {
+    addCount () {
+      this.judgeUser()
+      if (this.hasUserInfo) {
+        if (!this.travelNoteInfo.hasLiked) {
+          this.$emit('addCount')
+        }
+      }
+    }
+  },
+  mixins: [hasUserMixin]
 }
 </script>
 
