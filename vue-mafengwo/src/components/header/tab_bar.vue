@@ -17,7 +17,7 @@
           class="head-nav-li"
           :class="{'head-nav-li-active': $route.path === '/group'}"
         >
-          <router-link to="group" tag="a">
+          <router-link to="" tag="a">
             <div class="mfwzx-logo"></div>
           </router-link>
         </li>
