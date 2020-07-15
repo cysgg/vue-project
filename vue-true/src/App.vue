@@ -7,7 +7,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+const a = 3
 export default {
     name: 'App',
     components: {
